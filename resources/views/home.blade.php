@@ -25,7 +25,7 @@ function current_page($uri = "/") {
                                 <div class="carousel-content">
                                     <h1 class="animation animated-item-1">Play, Have fan, and Win</h1>
                                     <div class="animation animated-item-2">
-                                        Here at the Grand Emperor Casino. Located in Mactan Airport.
+                                        Here at the Grand Emperor Casino.
                                     </div>
                <!--                      <a class="btn-slide animation animated-item-3" href="#">Learn More</a>
                                     <a class="btn-slide white animation animated-item-3" href="#">Get Started</a> -->
@@ -44,7 +44,7 @@ function current_page($uri = "/") {
                                 <div class="carousel-content">
                                     <h1 class="animation animated-item-1">Play, Have fan, and Win</h1>
                                     <div class="animation animated-item-2">
-                                        Here at the Grand Emperor Casino. Located in Mactan Airport.
+                                        Here at the Grand Emperor Casino.
                                     </div>
                                   <!--   <a class="btn-slide white animation animated-item-3" href="#">Learn More</a>
                                     <a class="btn-slide animation animated-item-3" href="#">Get Started</a> -->

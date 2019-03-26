@@ -50,7 +50,7 @@
                     <div class="col-sm-6 col-xs-12">
                         <div class="social">
                             <ul class="social-share">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://web.facebook.com/grandemperorcasino/"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
@@ -82,19 +82,19 @@
                 </div>
 
                 <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li {{ (current_page("Home")) ? 'class=active' : '' }}><a href="{{ url('/')}}">Home</a></li>
-                        <li {{ (current_page("About")) ? 'class=active' : '' }}><a href="{{ url('/aboutus')}}">About Us</a></li>
+                    <ul class="nav navbar-nav"> 
+                        <li {{ (current_page("Home")) ? 'class=active' : '' }}><a href="{{ url('/')}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                        <li {{ (current_page("About")) ? 'class=active' : '' }}><a href="{{ url('/aboutus')}}"><span class="glyphicon glyphicon-search"></span> About Us</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Casino <i class="fa fa-angle-down"></i></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tower"></span> Casino <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
                                 <li {{ (current_page("Poker")) ? 'class=active' : '' }}><a href="{{ url('/poker')}}">Poker</a></li>
                                 <li {{ (current_page("Baccarat")) ? 'class=active' : '' }}><a href="{{ url('/baccarat')}}">Baccarat</a></li>
                                 <li {{ (current_page("MiniBaccarat")) ? 'class=active' : '' }}><a href="{{ url('/minibaccarat')}}">Mini Baccarat</a></li>
                             </ul>
                         </li>
-                        <li {{ (current_page("Events")) ? 'class=active' : '' }}><a href="{{ url('/events')}}">Events</a></li>
-                        <li {{ (current_page("Contact")) ? 'class=active' : '' }}><a href="{{ url('/contact')}}">Contact</a></li>
+                        <li {{ (current_page("Events")) ? 'class=active' : '' }}><a href="{{ url('/events')}}"><span class="glyphicon glyphicon-tasks"></span> Events</a></li>
+                        <li {{ (current_page("Contact")) ? 'class=active' : '' }}><a href="{{ url('/contact')}}"><span class="glyphicon glyphicon-phone"></span> Contact</a></li>
 
                     </ul>
                 </div>
@@ -102,10 +102,9 @@
             <!--/.container-->
         </nav>
         <!--/nav-->
-
-
     </header>
     <!--/header-->
+
 
 
 
@@ -115,6 +114,9 @@
 
  
             <!-- End Page Content -->
+
+
+
 
 
     <section id="bottom">
@@ -129,15 +131,15 @@
                     <div class="row">
                         <div class="col-md-3 col-sm-6">
                             <div class="widget">
-                                <h3>Heading 1</h3>
+                                <h3>Company</h3>
                                 <ul>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
+                                    <li><a href="#">Item 1</a></li>
+                                    <li><a href="#">Item 2</a></li>
+                                    <li><a href="#">Item 3</a></li>
+                                    <li><a href="#">Item 4</a></li>
+                                    <li><a href="#">Item 5</a></li>
+                                    <li><a href="#">Item 6</a></li>
+.                          
                                 </ul>
                             </div>
                         </div>
@@ -145,15 +147,15 @@
 
                         <div class="col-md-3 col-sm-6">
                             <div class="widget">
-                                <h3>Heading 2</h3>
+                                <h3>Support</h3>
                                 <ul>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
+                                    <li><a href="#">Item 1</a></li>
+                                    <li><a href="#">Item 2</a></li>
+                                    <li><a href="#">Item 3</a></li>
+                                    <li><a href="#">Item 4</a></li>
+                                    <li><a href="#">Item 5</a></li>
+                                    <li><a href="#">Item 6</a></li>
+                     
                                 </ul>
                             </div>
                         </div>
@@ -161,15 +163,15 @@
 
                         <div class="col-md-3 col-sm-6">
                             <div class="widget">
-                                <h3>Heading 3</h3>
+                                <h3>Developers</h3>
                                 <ul>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
+                                    <li><a href="#">Item 1</a></li>
+                                    <li><a href="#">Item 2</a></li>
+                                    <li><a href="#">Item 3</a></li>
+                                    <li><a href="#">Item 4</a></li>
+                                    <li><a href="#">Item 5</a></li>
+                                    <li><a href="#">Item 6</a></li>
+                           
                                 </ul>
                             </div>
                         </div>
@@ -177,15 +179,15 @@
 
                         <div class="col-md-3 col-sm-6">
                             <div class="widget">
-                                <h3>Heading 4</h3>
+                                <h3>Our Partner</h3>
                                 <ul>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
-                                    <li><a href="#">Item</a></li>
+                                    <li><a href="#">Item 1</a></li>
+                                    <li><a href="#">Item 2</a></li>
+                                    <li><a href="#">Item 3</a></li>
+                                    <li><a href="#">Item 4</a></li>
+                                    <li><a href="#">Item 5</a></li>
+                                    <li><a href="#">Item 6</a></li>
+
                                 </ul>
                             </div>
                         </div>

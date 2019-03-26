@@ -37,10 +37,10 @@ function current_page($uri = "/") {
                 <div class="portfolio-items">
                     <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-3 single-work">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/baccarat/item-1.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/Baccarat/item-1.png" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <a class="preview" href="images/portfolio/baccarat/item-1.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                                    <a class="preview" href="images/portfolio/Baccarat/item-1.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -49,10 +49,10 @@ function current_page($uri = "/") {
 
                     <div class="portfolio-item joomla bootstrap col-xs-12 col-sm-4 col-md-3 single-work">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/baccarat/item-2.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/Baccarat/item-2.png" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <a class="preview" href="images/portfolio/baccarat/item-2.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                                    <a class="preview" href="images/portfolio/Baccarat/item-2.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -61,10 +61,10 @@ function current_page($uri = "/") {
 
                     <div class="portfolio-item bootstrap wordpress col-xs-12 col-sm-4 col-md-3 single-work">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/baccarat/item-3.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/Baccarat/item-3.png" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <a class="preview" href="images/portfolio/baccarat/item-3.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                                    <a class="preview" href="images/portfolio/Baccarat/item-3.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -73,10 +73,10 @@ function current_page($uri = "/") {
 
                     <div class="portfolio-item joomla wordpress apps col-xs-12 col-sm-4 col-md-3 single-work">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/baccarat/item-4.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/Baccarat/item-4.png" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <a class="preview" href="images/portfolio/baccarat/item-4.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                                    <a class="preview" href="images/portfolio/Baccarat/item-4.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -85,10 +85,10 @@ function current_page($uri = "/") {
 
                     <div class="portfolio-item joomla html bootstrap col-xs-12 col-sm-4 col-md-3 single-work">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/baccarat/item-5.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/Baccarat/item-5.png" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <a class="preview" href="images/portfolio/baccarat/item-5.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                                    <a class="preview" href="images/portfolio/Baccarat/item-5.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -97,10 +97,10 @@ function current_page($uri = "/") {
 
                     <div class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 single-work">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/baccarat/item-1.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/Baccarat/item-1.png" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <a class="preview" href="images/portfolio/baccarat/item-1.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                                    <a class="preview" href="images/portfolio/Baccarat/item-1.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -110,10 +110,10 @@ function current_page($uri = "/") {
                   
                     <div class="portfolio-item joomla bootstrap col-xs-12 col-sm-4 col-md-3 single-work">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/baccarat/item-1.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/Baccarat/item-1.png" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <a class="preview" href="images/portfolio/baccarat/item-1.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                                    <a class="preview" href="images/portfolio/Baccarat/item-1.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -122,10 +122,10 @@ function current_page($uri = "/") {
 
                     <div class="portfolio-item wordpress html apps col-xs-12 col-sm-4 col-md-3 single-work">
                         <div class="recent-work-wrap">
-                            <img class="img-responsive" src="images/portfolio/baccarat/item-4.png" alt="">
+                            <img class="img-responsive" src="images/portfolio/Baccarat/item-4.png" alt="">
                             <div class="overlay">
                                 <div class="recent-work-inner">
-                                    <a class="preview" href="images/portfolio/baccarat/item-4.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
+                                    <a class="preview" href="images/portfolio/Baccarat/item-4.png" rel="prettyPhoto"><i class="fa fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
