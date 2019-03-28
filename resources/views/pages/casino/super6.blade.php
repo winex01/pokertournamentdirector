@@ -12,6 +12,35 @@ function current_page($uri = "/") {
   
 <!-- main -->
 
+
+
+<div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav"> 
+                        <li><a href="{{ url('/')}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                        <li><a href="{{ url('/aboutus')}}"><i class="fa fa-search"></i> About Us</a></li>
+                        <li class="dropdown active">   
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tower"></span> Casino <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('/blackjack')}}">Black Jack <button style="color:white; background:green;"> Soon</button></a></li>
+
+                                <li><a href="{{ url('/baccarat')}}">Baccarat</a></li>
+
+                                <li class="active"><a href="{{ url('/super6')}}">Baccarat Super 6</a></li>
+                              
+                                <li><a href="{{ url('/texasholdem')}}">Texas Hold 'em <button style="color:white; background:green;"> Soon</button></a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ url('/events')}}"><span class="glyphicon glyphicon-tasks"></span> Events</a></li>
+                        <li><a href="{{ url('/contact')}}"><span class="glyphicon glyphicon-phone"></span> Contact</a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <!--/.container-->
+        </nav>
+        <!--/nav-->
+    </header>
+    <!--/header-->
 <!-- 
     <div class="page-title" style="background-image: url(images/page-title.png)">
         <h1>Baccarat</h1>
@@ -20,9 +49,19 @@ function current_page($uri = "/") {
     <section id="portfolio">
         <div class="container">
             <div class="center">
-                <h2>Mini Baccarat</h2>
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <br> et dolore magna aliqua. Ut enim ad minim veniam</p>
-            </div>
+             <h2 style="font-family: althea; ">BACCARAT SUPER 6</h2>
+                <p class="lead">The aim of the game is to place a wager on the hand which totals nine or  the closest to nine.<br> You may place a wager in the player, banker or tie.<br><h1 style="font-family: althea; ">How to Play</h1>
+                    <justify>The aim of the game is to place a wager on the hands which totals nine or the closest to nine.
+                    Players may place a wager on: PLAYER or BANKER with additional side wagers for Player / Banker Pair, Tie or Super Six according to the minimum and maximum of the table.
+                    The Dealer deals two hands for Player and Banker.
+                    The highest bettor has the privilege to squeeze the cards or let the Dealer open the hand on his behalf. Player/Banker STANDS or HIT 3rd CARD depending on hitting rules.
+                    Dealer announces the winer after both hands have been revealed.
+                    Winning bets on Player or Banker is paid even money.
+                    Super Six wins 12 to 1 if banker wins on 6 points and all banker’s bet pays half.
+                    Tie wins 8 to 1 if Player and Banker have the same hand total.
+                    Pair wins 11 to 1 if the initial cards for Player or Banker has same value.</justify></p></div>
+
+
 
 <!-- 
             <ul class="portfolio-filter text-center">

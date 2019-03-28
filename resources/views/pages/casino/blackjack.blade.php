@@ -13,17 +13,16 @@ function current_page($uri = "/") {
 <!-- main -->
 
 
-
-                <div class="collapse navbar-collapse navbar-right">
+<div class="collapse navbar-collapse navbar-right">
                     <ul class="nav navbar-nav"> 
                         <li><a href="{{ url('/')}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                         <li><a href="{{ url('/aboutus')}}"><i class="fa fa-search"></i> About Us</a></li>
                         <li class="dropdown active">   
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tower"></span> Casino <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ url('/blackjack')}}">Black Jack <button style="color:white; background:green;"> Soon</button></a></li>
+                                <li class="active"><a href="{{ url('/blackjack')}}">Black Jack <button style="color:white; background:green;"> Soon</button></a></li>
 
-                                <li class="active"><a href="{{ url('/baccarat')}}">Baccarat</a></li>
+                                <li><a href="{{ url('/baccarat')}}">Baccarat</a></li>
 
                                 <li><a href="{{ url('/super6')}}">Baccarat Super 6</a></li>
                               
@@ -52,14 +51,14 @@ function current_page($uri = "/") {
     <section id="portfolio">
         <div class="container">
             <div class="center">
-                <h2 style="font-family: althea; ">BACCARAT</h2>
-                <p class="lead">The aim of the game is to place a wager on the hand which totals nine or  the closest to nine. <br>You may place a wager in the player, banker or tie.<br><h1 style="font-family: althea; ">How to Play</h1>
-                    <justify>Players may place a wager on: PLAYER, BANKER or TIE with additional side wagers for Player/Banker Pair according to the minimum and maximum of the table. The Dealer deals two hands for Player and Banker.
-                    The highest bettor has the privilege to squeeze the cards or let the Dealer opens the hand on his behalf. Player/Banker STANDS or HIT 3rd CARD depending on hitting rules. 
-                    Dealer announces the winner after both hands have been revealed.
-                    Tie wins 8 to 1 if Player and Banker have same hand total.
-                    Pair wins 11 to 1 if the initial cards for Player or Banker has same value.
-                    Winning bets on Player side is paid even money while winning bets on Banker side will be deducted 5% commission.</justify></p></div>
+                <h2 style="font-family: althea; ">BLACK JACK <span style="color:green;">[Soon to start]</span></h2>
+                <p class="lead">Objective of the game is to get as close as you can to 21 points without going over and achieve higher value than House cards.<br><h1 style="font-family: althea; ">How to Play</h1>
+                    <justify>
+                    Player will be given 2 initial cards and will be offered to Surrender; If House Face-up Card is not and Ace or if an Ace, the player willbe oofered Insurance. Otherwise player will be prompted to Hit another card or Stay. Cards are counted as 10 points. Aces however will be treated as a wild card and may be counted as “1 point” or “11 points” depending on how to maximize the point total.
+                    Option to SPLIT OR DOUBLE down is offered with conditional rules.
+                    A hand with a card valued as 10 together with an Ace constitues the highest possible points and the hand is called a Blackjack.
+                    Any point total reaching over 21 is considered a bust.
+                    Side bets offered for Pair (for 2 initial cards).</justify></p></div>
 
      <!--        <ul class="portfolio-filter text-center">
                 <li {{ (current_page("Baccarat")) ? 'class=active' : '' }}><a class="btn btn-default active" href="{{ url('/baccarat')}}"> Baccarat Photos</a></li>

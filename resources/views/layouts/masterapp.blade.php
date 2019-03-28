@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Grand Emperor Casino</title>
+    <title>Great Emperor Casino</title>
 
     <!-- core CSS -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -21,7 +21,7 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="shortcut icon" href="images/ico/favicon.ico"> 
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
@@ -52,7 +52,7 @@
                             <ul class="social-share">
                                 <li><a href="https://web.facebook.com/grandemperorcasino/"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                      <!--        <div class="search">
                                 <form role="form">
@@ -81,30 +81,6 @@
                     <a class="navbar-brand" href="/"><img src="images/emperorlogo.png" alt="logo"></a>
                 </div>
 
-                <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav"> 
-                        <li {{ (current_page("Home")) ? 'class=active' : '' }}><a href="{{ url('/')}}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                        <li {{ (current_page("About")) ? 'class=active' : '' }}><a href="{{ url('/aboutus')}}"><span class="glyphicon glyphicon-search"></span> About Us</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-tower"></span> Casino <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li {{ (current_page("Poker")) ? 'class=active' : '' }}><a href="{{ url('/poker')}}">Poker</a></li>
-                                <li {{ (current_page("Baccarat")) ? 'class=active' : '' }}><a href="{{ url('/baccarat')}}">Baccarat</a></li>
-                                <li {{ (current_page("MiniBaccarat")) ? 'class=active' : '' }}><a href="{{ url('/minibaccarat')}}">Mini Baccarat</a></li>
-                            </ul>
-                        </li>
-                        <li {{ (current_page("Events")) ? 'class=active' : '' }}><a href="{{ url('/events')}}"><span class="glyphicon glyphicon-tasks"></span> Events</a></li>
-                        <li {{ (current_page("Contact")) ? 'class=active' : '' }}><a href="{{ url('/contact')}}"><span class="glyphicon glyphicon-phone"></span> Contact</a></li>
-
-                    </ul>
-                </div>
-            </div>
-            <!--/.container-->
-        </nav>
-        <!--/nav-->
-    </header>
-    <!--/header-->
-
 
 
 
@@ -124,7 +100,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <a href="#" class="footer-logo">
-                        <img src="images/GELOGO.png" alt="logo">
+                        <img src="images/GREAT EMPEROR CASINO.png" alt="logo">
                     </a>
                 </div>
                 <div class="col-md-10">
@@ -133,13 +109,11 @@
                             <div class="widget">
                                 <h3>Company</h3>
                                 <ul>
-                                    <li><a href="#">Item 1</a></li>
-                                    <li><a href="#">Item 2</a></li>
-                                    <li><a href="#">Item 3</a></li>
-                                    <li><a href="#">Item 4</a></li>
-                                    <li><a href="#">Item 5</a></li>
-                                    <li><a href="#">Item 6</a></li>
-.                          
+                                     <li {{ (current_page("About")) ? 'class=active' : '' }}><a href="{{ url('/aboutus')}}">About Us</a></li>
+                                     <li {{ (current_page("Events")) ? 'class=active' : '' }}><a href="{{ url('/events')}}">Events</a></li>
+                                     <li {{ (current_page("About")) ? 'class=active' : '' }}><a href="{{ url('/contact')}}">We are hiring</a></li>
+                                      <li {{ (current_page("About")) ? 'class=active' : '' }}><a href="{{ url('/contact')}}">Contact Us</a></li>
+                                                          
                                 </ul>
                             </div>
                         </div>
@@ -147,14 +121,12 @@
 
                         <div class="col-md-3 col-sm-6">
                             <div class="widget">
-                                <h3>Support</h3>
+                                <h3>Social Media</h3>
                                 <ul>
-                                    <li><a href="#">Item 1</a></li>
-                                    <li><a href="#">Item 2</a></li>
-                                    <li><a href="#">Item 3</a></li>
-                                    <li><a href="#">Item 4</a></li>
-                                    <li><a href="#">Item 5</a></li>
-                                    <li><a href="#">Item 6</a></li>
+                                    <li><a href="https://web.facebook.com/grandemperorcasino/">Facebook</a></li>
+                                    <li><a href="#">Twitter</a></li>
+                                    <li><a href="#">Instagram</a></li>
+       
                      
                                 </ul>
                             </div>
@@ -165,12 +137,10 @@
                             <div class="widget">
                                 <h3>Developers</h3>
                                 <ul>
-                                    <li><a href="#">Item 1</a></li>
-                                    <li><a href="#">Item 2</a></li>
-                                    <li><a href="#">Item 3</a></li>
-                                    <li><a href="#">Item 4</a></li>
-                                    <li><a href="#">Item 5</a></li>
-                                    <li><a href="#">Item 6</a></li>
+                                    <li><a href="#">Web Developer</a></li>
+                                    <li><a href="#">Theme</a></li>
+                                    <li><a href="#">Back-end Programmer</a></li>
+           
                            
                                 </ul>
                             </div>
@@ -181,12 +151,8 @@
                             <div class="widget">
                                 <h3>Our Partner</h3>
                                 <ul>
-                                    <li><a href="#">Item 1</a></li>
-                                    <li><a href="#">Item 2</a></li>
-                                    <li><a href="#">Item 3</a></li>
-                                    <li><a href="#">Item 4</a></li>
-                                    <li><a href="#">Item 5</a></li>
-                                    <li><a href="#">Item 6</a></li>
+                                    <li><a href="#">Emperor City Poker</a></li>
+                 
 
                                 </ul>
                             </div>
@@ -205,7 +171,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    &copy; 2019 <a target="_blank" href="#">GrandEmperorCasino</a>. All Rights Reserved.
+                    &copy; 2019 <a target="_blank" href="#">GreatEmperorCasino</a>. All Rights Reserved.
                 </div>
                 <div class="col-sm-6">
                     <ul class="pull-right">
