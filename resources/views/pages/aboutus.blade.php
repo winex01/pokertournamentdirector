@@ -54,7 +54,7 @@ function current_page($uri = "/") {
                 <div class="col-md-5">
                     <div class="about-content">
                         <h2>Who we are</h2>
-                        <p>Great Emperor Casino is a  luxury junket casino with an ambiance and amenities for exclusive and exciting play. <br> Located on the resort island of Mactan, only minutes away from the international airport and a short jaunt from Shangri-la’s mactan Resort, Crimson Resort, Planantation Bay, Movenpick and other resorts. <br> Grand Emperor Casino can provide an environment where players and guests can play, be entertained, and frolic - for the sun and the night lights shine brighter on our side of the island.</p>
+                        <p>Great Emperor Casino is a  luxury junket casino with an ambiance and amenities for exclusive and exciting play. <br> Located on the resort island of Mactan, only minutes away from the international airport and a short jaunt from Shangri-la’s mactan Resort, Crimson Resort, Plantation Bay, Movenpick and other resorts. <br> Grand Emperor Casino can provide an environment where players and guests can play, be entertained, and frolic - for the sun and the night lights shine brighter on our side of the island.</p>
                     </div>
                 </div>
             </div>

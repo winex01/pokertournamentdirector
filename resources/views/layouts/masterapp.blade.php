@@ -51,8 +51,9 @@
                         <div class="social">
                             <ul class="social-share">
                                 <li><a href="https://web.facebook.com/grandemperorcasino/"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://twitter.com/EmperorCasino"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/great_emperor_casino/"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/great-emperor-casino-2b67aa183/"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
                      <!--        <div class="search">
                                 <form role="form">
@@ -124,9 +125,9 @@
                                 <h3>Social Media</h3>
                                 <ul>
                                     <li><a href="https://web.facebook.com/grandemperorcasino/">Facebook</a></li>
-                                    <li><a href="#">Twitter</a></li>
-                                    <li><a href="#">Instagram</a></li>
-       
+                                    <li><a href="https://twitter.com/EmperorCasino">Twitter</a></li>
+                                    <li><a href="https://www.instagram.com/great_emperor_casino/">Instagram</a></li>
+                                    <li><a href="https://www.linkedin.com/in/great-emperor-casino-2b67aa183/">LinkedIn</a></li>
                      
                                 </ul>
                             </div>
