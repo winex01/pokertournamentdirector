@@ -1,0 +1,10 @@
+Countdown Clock with Pause and Resume Functionality
+<br><br>
+<div id="clockdiv"></div>
+
+
+<button id="pause">Pause</button>
+<button id="resume">Resume</button>
+
+<br><br>
+<a href="http://simplestepscode.com/" target="_blank">Simple Steps Code</a>
