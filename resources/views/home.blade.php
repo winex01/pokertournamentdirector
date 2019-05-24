@@ -62,7 +62,7 @@ function current_page($uri = "/") {
 
         <div class="col-sm-6">
         
-                <center><span style="font-size: 45px; color:black;"><b>POKER TOURNAMENT DIRECTOR</b></span></center>
+                <center><span style="font-size: 45px; color:black; "><b>POKER TOURNAMENT DIRECTOR</b></span></center>
 
        <!--               <span style="font-size: 40px; color:#ebc944;"><b>POKER TOURNAMENT DIRECTOR</b></span>
                -->
@@ -247,7 +247,7 @@ function run_clock(id,endtime){
   var clock = document.getElementById(id);
   function update_clock(){
     var t = time_remaining(endtime);
-    clock.innerHTML = '<b>'+t.minutes+':</b><b>'+t.seconds+'</b><b style="font-size: 20px; color:#0a0;">Min. / Sec.</b>';
+    clock.innerHTML = '<b>'+t.minutes+':</b><b>'+t.seconds+'</b><b style="font-size: 20px; color:#0a0; font-family: digital-clock-font">Min. / Sec.</b>';
     if(t.total<=0){ 
 
       clearInterval(timeinterval);
@@ -428,7 +428,10 @@ $(document).ready(function(){
 }
 
 
-
+@font-face{
+ font-family:'digital-clock-font-title';
+ src: url('../../font/square_sans_serif_7.ttf');
+}
 
 
 @font-face{
