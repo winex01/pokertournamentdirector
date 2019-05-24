@@ -30,7 +30,7 @@ function current_page($uri = "/") {
            </div><br>
  -->  
         <ul class="list-group">
-            <li class="list-group-item" style="font-size: 25px; background: black; color: white;"><b>EMPEROR CITY POKER</b></li>
+            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>EMPEROR CITY POKER</b></li>
             <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b style="font-size: 25px; color:#0a0;"><input style="width:40px; border:0;" value="0" id="count">&nbsp&nbsp</b> 
                  <button type="button" class="btn btn-xs btn-danger" id="moins" onclick="minus()"><i class="glyphicon glyphicon-minus"></i></button>
                  <button type="button" class="btn btn-xs btn-primary" id="plus" onclick="plus()"><i class="glyphicon glyphicon-plus"></i></button>
@@ -45,7 +45,7 @@ function current_page($uri = "/") {
           </ul> 
 
              <ul class="list-group">
-            <li class="list-group-item" style="font-size: 25px; background: black; color: white;"><b>CHIPS</b>  <button data-toggle="modal" data-target="" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button></li>
+            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>CHIPS</b>  <button data-toggle="modal" data-target="" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button></li>
             <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('chips/red2.jpg')}}" style="height: 75px; width: 75px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 50px; color:black;">25</b></li>
              
                <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('chips/black.jpg')}}" style="height: 75px; width: 75px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 50px; color:black;">100</b></li>
@@ -79,7 +79,7 @@ function current_page($uri = "/") {
              <!--  <center><span id="display" style="font-size: 150px; color:#0a0;"><b>00:00</b></span><br><button type="button" class="btn btn-sm btn-danger" onclick="setCount()"><i class="glyphicon glyphicon-pause"></i> Pause</button><button type="button" class="btn btn-sm btn-success" onclick="setCount()"><i class="glyphicon glyphicon-play"></i> Start</button><button type="button" class="btn btn-sm btn-primary" onclick="setCount()"><i class="glyphicon glyphicon-arrow-right"></i> Next</button></center><br>
  -->
 
-              <center><span id="clockdiv" style="font-size: 200px; color:#0a0;"><b>00:00</b></span><br><button type="button" class="btn btn-sm btn-danger" id="pause"><i class="glyphicon glyphicon-pause"></i> Pause</button><button type="button" class="btn btn-sm btn-success" id="resume"><i class="glyphicon glyphicon-play"></i> Resume</button></center><br>
+              <center><span id="clockdiv" style="font-size: 200px; color:#0a0; font-family:'digital-clock-font'"><b>00:00</b></span><br><button type="button" class="btn btn-sm btn-danger" id="pause"><i class="glyphicon glyphicon-pause"></i> Pause</button><button type="button" class="btn btn-sm btn-success" id="resume"><i class="glyphicon glyphicon-play"></i> Resume</button></center><br>
               
               <audio id="soundHandle" style="display: none;"></audio>
 
@@ -143,7 +143,7 @@ function current_page($uri = "/") {
 
 
             <ul class="list-group">
-            <li class="list-group-item" style="font-size: 25px; background: black; color: white;"><b>PRIZE MONEY</b> <button data-toggle="modal" data-target="#addformmodal" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button></li>
+            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>PRIZE MONEY</b> <button data-toggle="modal" data-target="#addformmodal" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button></li>
 @foreach($prizemoney as $prize)
             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>{{$prize->place}}</strong></span><b style="font-size: 30px; color:red;">{{$prize->amount}}</b></li>
 @endforeach
@@ -428,6 +428,13 @@ $(document).ready(function(){
 }
 
 
+
+
+
+@font-face{
+ font-family:'digital-clock-font';
+ src: url('../../font/digital-7 (mono).ttf');
+}
 
 
 /* @end */
