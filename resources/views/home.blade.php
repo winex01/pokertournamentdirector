@@ -1,34 +1,10 @@
-
-
-
 @extends('layouts.guest')
-
-
 @section('content')
- 
-<?php
-function current_page($uri = "/") {
-    return strstr(request()->path(), $uri);
-}
-?>
-
 
     <div class="row">
    <!--      <center><div class="col-sm-10"><h1>Emperor City Poker</h1></div></center> -->
         <div class="col-sm-3"><!--left col-->
-          <!--   <div class="text-center">
-        <img src="{{asset('Emperor_City_Poker_Header_192x192.jpg')}}" style="height: 150px; width: 150px;" class="avatar img-circle img-thumbnail" alt="avatar">
-           </div><br>
-            <div class="text-center">
-        <img src="{{asset('Emperor_City_Poker_Header_192x192.jpg')}}" style="height: 150px; width: 150px;" class="avatar img-circle img-thumbnail" alt="avatar">
-           </div><br>
-            <div class="text-center">
-        <img src="{{asset('Emperor_City_Poker_Header_192x192.jpg')}}" style="height: 150px; width: 150px;" class="avatar img-circle img-thumbnail" alt="avatar">
-           </div><br>
-                       <div class="text-center">
-        <img src="{{asset('Emperor_City_Poker_Header_192x192.jpg')}}" style="height: 150px; width: 150px;" class="avatar img-circle img-thumbnail" alt="avatar">
-           </div><br>
- -->  
+
         <ul class="list-group">
             <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>EMPEROR CITY POKER</b></li>
             <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b style="font-size: 25px; color:#0a0;"><input style="width:40px; border:0;" value="0" id="count">&nbsp&nbsp</b> 
@@ -64,20 +40,7 @@ function current_page($uri = "/") {
         
                 <center><span style="font-size: 45px; color:black; "><b>POKER TOURNAMENT DIRECTOR</b></span></center>
 
-       <!--               <span style="font-size: 40px; color:#ebc944;"><b>POKER TOURNAMENT DIRECTOR</b></span>
-               -->
           <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 20px;">
-            <!--   <?php 
-              $datetoday = "05/23/2019"; 
-              $time = "20";
-              ?> 
-              <input value="{{$datetoday}}" type="hidden" id="date"/>
-              <input value="20" type="hidden" id="time"/> -->
-              
-          <!--     <audio id="soundHandle" style="display: none;"></audio> -->
-
-             <!--  <center><span id="display" style="font-size: 150px; color:#0a0;"><b>00:00</b></span><br><button type="button" class="btn btn-sm btn-danger" onclick="setCount()"><i class="glyphicon glyphicon-pause"></i> Pause</button><button type="button" class="btn btn-sm btn-success" onclick="setCount()"><i class="glyphicon glyphicon-play"></i> Start</button><button type="button" class="btn btn-sm btn-primary" onclick="setCount()"><i class="glyphicon glyphicon-arrow-right"></i> Next</button></center><br>
- -->
               <center>
                 <h1 id="round" style="margin-bottom: -50px;">{{ $firstTournament->level }}</h1>
                 <div class="clock" style="font-size: 200px; color:#0a0; font-family:'digital-clock-font'"><b>{{ $duration->in_minutes }}</b></div>
@@ -98,7 +61,7 @@ function current_page($uri = "/") {
                   <span id="play_pause_div">Play</span>
                 </button>
                 <span style="margin-left: 50px;"></span>
-                <button type="button" class="btn btn-sm btn-success" id="poker_next_round"><i class="glyphicon glyphicon-pause"></i> Next Round</button>
+                <button type="button" class="btn btn-sm btn-success" id="poker_next_round"><i class="glyphicon glyphicon-arrow-right"></i> Next Round</button>
               </center>
               <br>
               <br>
@@ -125,88 +88,27 @@ function current_page($uri = "/") {
                 @endforeach
               </ul>  
         </form>
-
-         {{-- <li class="list-group-item text-muted">CURRENT BLINDS: </li>
-          <li class="list-group-item text-right">
-            <span class="pull-left">
-              <span class="pull-left" style="font-size: 40px;">
-                <strong>Level 1</strong>
-              </span>
-            </span>
-            <b style="font-size: 40px; color:#0a0;">25/50</b>
-          </li> --}}
-
-
-    
         </div><!--/col-6-->
 
 
-
-         <div class="col-sm-3"><!--left col-->
-<!-- 
-             <ul class="list-group">
-            <li class="list-group-item" style="font-size: 25px;"><b>PRIZE MONEY</b></li>
-            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>1ST</strong></span><b style="font-size: 25px; color:#0a0;">Php 30,000</b></li>
-             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>2ND</strong></span><b style="font-size: 25px; color:#0a0;">Php 25,000</b></li>
-            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>3RD</strong></span><b style="font-size: 25px; color:#0a0;">Php 20,000</b> </li>
-             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>4TH</strong></span><b style="font-size: 25px; color:#0a0;">Php 15,000</b></li>
-              <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>5TH</strong></span><b style="font-size: 25px; color:#0a0;">Php 15,000</b></li>
-               <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>6TH</strong></span><b style="font-size: 25px; color:#0a0;">Php 15,000</b></li>
-                <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>7TH</strong></span><b style="font-size: 25px; color:#0a0;">Php 15,000</b></li>
-                 <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>8TH</strong></span><b style="font-size: 25px; color:#0a0;">Php 15,000</b></li>
-                  <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>9TH</strong></span><b style="font-size: 25px; color:#0a0;">Php 15,000</b></li>
-       
-          </ul> 
- -->
-
-
-     
-  <div class="example-modal" id="addformmodal">
-            <div class="modal">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Modal Default</h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>One fine body&hellip;</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div><!-- /.modal-content -->
-              </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-          </div><!-- /.example-modal -->
-     
-
-
-
+        <div class="col-sm-3">
             <ul class="list-group">
             <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>PRIZE MONEY</b> <button data-toggle="modal" data-target="#addformmodal" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button></li>
-@foreach($prizemoney as $prize)
+            @foreach($prizemoney as $prize)
             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>{{$prize->place}}</strong></span><b style="font-size: 30px; color:red;">{{$prize->amount}}</b></li>
-@endforeach
+            @endforeach
             </ul> 
-        </div><!--/col-3-->
+            </div><!--/col-3-->
 
- 
-            
-              </div>
-
-
-               
-              </div><!--/tab-pane-->
+            </div> 
+           </div><!--/tab-pane-->
           </div><!--/tab-content-->
-
     </div><!--/row-->
                                                       
-<audio id="alarm" controls="controls">
+<!-- <audio id="alarm" controls="controls">
   <source src="{{asset('sound/alert.mp3')}}" type="audio/mpeg" />
     Your browser does not support the audio element.
-  </audio>
+  </audio> -->
 
 
 
@@ -383,4 +285,92 @@ function current_page($uri = "/") {
 </script>
 
 @endpush
+
+
+
+<script type="text/javascript">
+  
+  //Plus Minus Players
+
+    var count = 1;
+    var countEl = document.getElementById("count");
+    function plus(){
+        count++;
+        countEl.value = count;
+    }
+    function minus(){
+      if (count >= 1) {
+        count--;
+        countEl.value = count;
+      }  
+    }
+
+    var count1 = 1;
+    var countEl1 = document.getElementById("count1");
+    function plus1(){
+        count1++;
+        countEl1.value = count1;
+    }
+    function minus1(){
+      if (count1 >= 1) {
+        count1--;
+        countEl1.value = count1;
+      }  
+    }
+
+
+</script>
+
+
+
+<style type="text/css">
+  
+  /* @group Blink */
+.blink {
+  -webkit-animation: blink .75s linear infinite;
+  -moz-animation: blink .75s linear infinite;
+  -ms-animation: blink .75s linear infinite;
+  -o-animation: blink .75s linear infinite;
+   animation: blink .75s linear infinite;
+}
+@-webkit-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@-o-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+
+@font-face{
+  font-family: 'digital-clock-font';
+  src: url('../../font/digital-7 (mono).ttf');
+}
+
+
+</style>
 @endsection
+
