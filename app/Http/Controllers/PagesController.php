@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
+use Album;
+use App\Duration;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
 use App\Http\Requests;
 use App\Masterfile;
-use App\Tournament;
 use App\Prizemoney;
-use Session;
+use App\Tournament;
 use Excel;
 use File;
-use Album;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\URL;
+use Laravel\Scout\Searchable;
+use Session;
 
 class PagesController extends Controller
 {
@@ -39,24 +40,36 @@ class PagesController extends Controller
 //Non Admin
  	public function home()
  	{
+    $firstTournament = Tournament::firstOrFail();
+    $tournaments = Tournament::all();
+    $prizemoney = Prizemoney::all();
+
+    $temp = explode('/', $firstTournament->blinds);
+    $blindParts = [
+      'big' => $temp[1],
+      'small' => $temp[0]
+    ];
 
 
-$prizemoney = Prizemoney::all();
-return view('/home')->with('prizemoney',$prizemoney);
-/*    $result =DB::table('tournament')->paginate(2);
-        return view('/home', ["data"=>$result]);
-  */
-  /*  $status = 'active';
-    $result = DB::table('tournament')
-    ->select('*')
-    ->where('status', '=', $status)->first();
+    $allBlinds = [];
+    foreach ($tournaments as $tournament) {
+      $temp = explode('/', $tournament->blinds);
+      $allBlinds[] = [
+        'small' => (int)$temp[0],
+        'big' => (int)$temp[1]
+      ]; 
+    }
 
-      if ($result == true) {
-        return view('/home', compact('result'));
-      }else{
-         return redirect('/home');
-      }*/
+    $duration = Duration::firstOrFail();
 
+    return view('/home', compact(
+      'prizemoney', 
+      'firstTournament', 
+      'tournaments',
+      'blindParts',
+      'allBlinds',
+      'duration'
+    ));
 }
 
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUsertypeToUsers extends Migration
+class CreateDurationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddUsertypeToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-             $table->text('usertype')->after('updated_at');
+        Schema::create('durations', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('in_seconds');
+            $table->string('in_minutes');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddUsertypeToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-             $table->dropcolumn('usertype');
-        });
+        Schema::dropIfExists('durations');
     }
 }

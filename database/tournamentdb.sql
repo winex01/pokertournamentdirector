@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 24, 2019 at 08:23 PM
--- Server version: 5.7.19
--- PHP Version: 7.1.7
+-- Generation Time: May 25, 2019 at 10:21 AM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,6 +55,42 @@ INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `usertype`, `p
 
 CREATE TABLE `banner` (
   `id` int(10) UNSIGNED NOT NULL,
+  `imagename` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imagefile` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `durations`
+--
+
+CREATE TABLE `durations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `in_seconds` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `in_minutes` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `durations`
+--
+
+INSERT INTO `durations` (`id`, `in_seconds`, `in_minutes`, `created_at`, `updated_at`) VALUES
+(1, '60', '1:00', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manpowerdocs`
+--
+
+CREATE TABLE `manpowerdocs` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `masterfile_id` int(11) NOT NULL,
   `imagename` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `imagefile` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -144,7 +180,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2018_12_30_150128_add_imagefile_to_manpower_table', 1),
 (14, '2019_01_04_131330_create_banner_table', 1),
 (15, '2019_01_25_163955_create__masterfile_table', 1),
-(16, '2019_02_01_155333_create_admins_table', 1);
+(16, '2019_02_01_155333_create_admins_table', 1),
+(17, '2019_02_24_103922_create_manpowerdocs_table', 2),
+(18, '2019_05_25_085121_create_durations_table', 3);
 
 -- --------------------------------------------------------
 
@@ -192,7 +230,6 @@ CREATE TABLE `tournament` (
   `id` int(11) NOT NULL,
   `level` varchar(50) NOT NULL,
   `blinds` varchar(50) NOT NULL,
-  `time` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -200,11 +237,11 @@ CREATE TABLE `tournament` (
 -- Dumping data for table `tournament`
 --
 
-INSERT INTO `tournament` (`id`, `level`, `blinds`, `time`, `status`) VALUES
-(101, 'Level 1', '25/50', '6:40 pm', 'active'),
-(102, 'Level 2', '50/100', '20', 'active'),
-(103, 'Level 3', '100/150', '20', 'active'),
-(104, 'Level 4', '150/200', '20', 'active');
+INSERT INTO `tournament` (`id`, `level`, `blinds`, `status`) VALUES
+(101, 'Level 1', '25/50', 'active'),
+(102, 'Level 2', '50/100', 'active'),
+(103, 'Level 3', '100/150', 'active'),
+(104, 'Level 4', '150/200', 'active');
 
 -- --------------------------------------------------------
 
@@ -246,6 +283,18 @@ ALTER TABLE `admins`
 -- Indexes for table `banner`
 --
 ALTER TABLE `banner`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `durations`
+--
+ALTER TABLE `durations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `manpowerdocs`
+--
+ALTER TABLE `manpowerdocs`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -302,6 +351,18 @@ ALTER TABLE `banner`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `durations`
+--
+ALTER TABLE `durations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `manpowerdocs`
+--
+ALTER TABLE `manpowerdocs`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `masterfile`
 --
 ALTER TABLE `masterfile`
@@ -311,7 +372,7 @@ ALTER TABLE `masterfile`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `prizemoney`
