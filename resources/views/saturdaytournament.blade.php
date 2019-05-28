@@ -16,7 +16,7 @@
 
         <ul class="list-group">
             <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - SATURDAY TOURNAMENT</b></li>
-            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b style="font-size: 25px; color:#0a0;"><input style="text-align: center; width:50px; border:0;" value="0">&nbsp&nbsp</b> 
+            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b style="font-size: 25px; color:#0a0;"><input style="text-align: center; width:50px; border:0;" value="0" id="players">&nbsp&nbsp</b> 
                  <button type="button" class="btn btn-xs btn-danger" id="moins" onclick="minus()"><i class="glyphicon glyphicon-minus"></i></button>
                  <button type="button" class="btn btn-xs btn-primary" id="plus" onclick="plus()"><i class="glyphicon glyphicon-plus"></i></button>
 
@@ -83,66 +83,20 @@
                 <li class="list-group-item text-muted" style="font-size: 20px; background: black; color: white; font-family:'digital-clock-font'">LEVELS<span class="pull-right">BLINDS</span></li>
                 
     @foreach ($tournamentpaginate as $tag)
-
   
                   <li class="list-group-item text-right">
                     <span class="pull-left">
                       <span class="pull-left">
-                        <strong style="font-size: 20px;">{{ $tag->level }}</strong>
+                        <strong style="font-size: 25px;">{{ $tag->level }}</strong>
                       </span>
-                    </span><b  style="font-size: 20px;">{{ $tag->blinds }}</b>
+                    </span><b  style="font-size: 25px;">{{ $tag->blinds }}</b>
                   </li>
                 @endforeach
           
-              {!! $tournamentpaginate->render() !!}
+              <center>{!! $tournamentpaginate->render() !!}</center>
 
                   </ul>  
 
-<!-- 
-  <div id="tag_container">
-
-       <table class="table table-bordered">
-
-  <thead  style="color:white;">
-
-    <tr>
-
-      <th>LEVELS</th>
-
-      <th>BLINDS</th>
-
-    </tr>
-
-  </thead>
-
-  <tbody  style="color:white;">
-
-    @foreach ($tournamentpaginate as $tag)
-
-      <tr>
-
-
-          <td>{{ $tag->level }}</td>
-
-           <td>{{ $tag->blinds }}</td>
-
-      </tr>
-
-      @endforeach
-
-  </tbody>
-
-</table>
-
-
-{!! $tournamentpaginate->render() !!}
-
-  </div>
- -->
-
-
- 
-       
         </div><!--/col-6-->
 
 
@@ -476,28 +430,6 @@
   }
 
 
-
-
-
-
-//PAGINATE 
-$(document).ready(function() { 
-  $(document).on('click', '.prev, .next', function() { 
-    $.ajax({
-      // the route you're requesting should return view('page_details') with the required variables for that view
-      url: '/details?from=' + $(this).attr('data-from'),
-      type: 'get'
-    }).done(response) { 
-      $('div#results').html(response);
-    }
-  });
-});
-
-$.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
-});
 
 
 
