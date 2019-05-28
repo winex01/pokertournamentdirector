@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 27, 2019 at 09:44 PM
+-- Generation Time: May 28, 2019 at 07:23 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.7
 
@@ -80,7 +80,86 @@ CREATE TABLE `durations` (
 --
 
 INSERT INTO `durations` (`id`, `in_seconds`, `in_minutes`, `created_at`, `updated_at`) VALUES
-(1, '60', '1:00', NULL, NULL);
+(1, '1200', '20:00', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `everydayduration`
+--
+
+CREATE TABLE `everydayduration` (
+  `id` int(50) NOT NULL,
+  `in_seconds` varchar(50) NOT NULL,
+  `in_minutes` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `everydayduration`
+--
+
+INSERT INTO `everydayduration` (`id`, `in_seconds`, `in_minutes`) VALUES
+(101, '600', '10:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `everydayprize`
+--
+
+CREATE TABLE `everydayprize` (
+  `id` int(50) NOT NULL,
+  `totalprize` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `everydayprize`
+--
+
+INSERT INTO `everydayprize` (`id`, `totalprize`) VALUES
+(101, '8888');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `everydayprizemoney`
+--
+
+CREATE TABLE `everydayprizemoney` (
+  `id` int(50) NOT NULL,
+  `place` varchar(50) NOT NULL,
+  `amount` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `everydayprizemoney`
+--
+
+INSERT INTO `everydayprizemoney` (`id`, `place`, `amount`) VALUES
+(101, '1st', '.10'),
+(103, '2nd', '.20'),
+(103, '3rd', '.30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `everydaytournament`
+--
+
+CREATE TABLE `everydaytournament` (
+  `id` int(50) NOT NULL,
+  `level` varchar(50) NOT NULL,
+  `blinds` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `everydaytournament`
+--
+
+INSERT INTO `everydaytournament` (`id`, `level`, `blinds`, `status`) VALUES
+(101, 'Level 1', '10/25', 'active'),
+(102, 'Level 2', '25/50', 'active');
 
 -- --------------------------------------------------------
 
@@ -222,7 +301,7 @@ INSERT INTO `players` (`id`, `players`) VALUES
 
 CREATE TABLE `prize` (
   `id` int(50) NOT NULL,
-  `totalchips` decimal(50,0) NOT NULL
+  `totalchips` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -230,7 +309,7 @@ CREATE TABLE `prize` (
 --
 
 INSERT INTO `prize` (`id`, `totalchips`) VALUES
-(101, '100000');
+(101, 100000);
 
 -- --------------------------------------------------------
 
@@ -353,6 +432,24 @@ ALTER TABLE `durations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `everydayduration`
+--
+ALTER TABLE `everydayduration`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `everydayprize`
+--
+ALTER TABLE `everydayprize`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `everydaytournament`
+--
+ALTER TABLE `everydaytournament`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `manpowerdocs`
 --
 ALTER TABLE `manpowerdocs`
@@ -434,6 +531,24 @@ ALTER TABLE `banner`
 --
 ALTER TABLE `durations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `everydayduration`
+--
+ALTER TABLE `everydayduration`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+
+--
+-- AUTO_INCREMENT for table `everydayprize`
+--
+ALTER TABLE `everydayprize`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+
+--
+-- AUTO_INCREMENT for table `everydaytournament`
+--
+ALTER TABLE `everydaytournament`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `manpowerdocs`

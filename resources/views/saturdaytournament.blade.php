@@ -1,24 +1,32 @@
 @extends('layouts.guest')
 @section('content')
 
+
+        <?php 
+           // $totalchip = $prize->totalchips;
+           //$player = number_format($players->players);
+           // $ave = number_format($totalchip/$player);
+           // $totalchips = number_format($totalchip);
+        ?>
+
+
     <div class="row">
    <!--      <center><div class="col-sm-10"><h1>Emperor City Poker</h1></div></center> -->
         <div class="col-sm-3"><!--left col-->
 
         <ul class="list-group">
             <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - SATURDAY TOURNAMENT</b></li>
-            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b style="font-size: 25px; color:#0a0;"><input style="text-align: right; width:50px; border:0;" value="0" id="players"> / <input style="width:40px; border:0;" value="{{ $players->players }}">&nbsp&nbsp</b> 
+            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b style="font-size: 25px; color:#0a0;"><input style="text-align: center; width:50px; border:0;" value="0">&nbsp&nbsp</b> 
                  <button type="button" class="btn btn-xs btn-danger" id="moins" onclick="minus()"><i class="glyphicon glyphicon-minus"></i></button>
                  <button type="button" class="btn btn-xs btn-primary" id="plus" onclick="plus()"><i class="glyphicon glyphicon-plus"></i></button>
 
-            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Rebuys</strong></span><b style="font-size: 25px; color:#0a0;"><input style="width:70px; border:0;" value="0" id="rebuy">&nbsp&nbsp</b> 
+            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Rebuys</strong></span><b style="font-size: 25px; color:#0a0;"><input style="text-align: center; width:50px; border:0;" value="0" id="rebuy">&nbsp&nbsp</b> 
                 <button type="button" class="btn btn-xs btn-danger" id="moins1" onclick="minus1()"><i class="glyphicon glyphicon-minus"></i></button>
                  <button type="button" class="btn btn-xs btn-primary" id="plus1" onclick="plus1()"><i class="glyphicon glyphicon-plus"></i></button></li>
-       
-       <!--       <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Ave. Chips</strong></span><b><input value="0"  id="average" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>-->
+    
+              <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Ave. Chips</strong></span><b><input value="0"  id="average" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
           
-          <?php $totalchip = number_format($prize->totalchips);?>
-             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Total Chips</strong></span><b><input type="text" value="{{ $totalchip }}" id="tchips" name="tchips" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
+             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Total Chips</strong></span><b><input type="text" value="0" id="tchips" name="tchips" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
            
           </ul> 
 
@@ -68,22 +76,72 @@
                 <span style="margin-left: 50px;"></span>
                 <button type="button" class="btn btn-sm btn-warning reset"><i class="glyphicon glyphicon-refresh"></i> Reset</button>
 
-              </center> </form>
+              </center> </form><br>
               
 
-              <ul class="list-group" id="tournament-timers">
+              <ul class="list-group" id="tag_container">
                 <li class="list-group-item text-muted" style="font-size: 20px; background: black; color: white; font-family:'digital-clock-font'">LEVELS<span class="pull-right">BLINDS</span></li>
-                @foreach ($tournaments as $tournament)
+                
+    @foreach ($tournamentpaginate as $tag)
+
   
                   <li class="list-group-item text-right">
                     <span class="pull-left">
                       <span class="pull-left">
-                        <strong style="font-size: 20px;">{{ $tournament->level }}</strong>
+                        <strong style="font-size: 20px;">{{ $tag->level }}</strong>
                       </span>
-                    </span><b  style="font-size: 20px;">{{ $tournament->blinds }}</b>
+                    </span><b  style="font-size: 20px;">{{ $tag->blinds }}</b>
                   </li>
                 @endforeach
-              </ul>  
+          
+              {!! $tournamentpaginate->render() !!}
+
+                  </ul>  
+
+<!-- 
+  <div id="tag_container">
+
+       <table class="table table-bordered">
+
+  <thead  style="color:white;">
+
+    <tr>
+
+      <th>LEVELS</th>
+
+      <th>BLINDS</th>
+
+    </tr>
+
+  </thead>
+
+  <tbody  style="color:white;">
+
+    @foreach ($tournamentpaginate as $tag)
+
+      <tr>
+
+
+          <td>{{ $tag->level }}</td>
+
+           <td>{{ $tag->blinds }}</td>
+
+      </tr>
+
+      @endforeach
+
+  </tbody>
+
+</table>
+
+
+{!! $tournamentpaginate->render() !!}
+
+  </div>
+ -->
+
+
+ 
        
         </div><!--/col-6-->
 
@@ -321,88 +379,6 @@
 
         var newtotalchips = (totalchips+rebuychipsval);
 
-   
-
-
-
-
-
-
-
-//SAMPLE AJAX UPDATE DATABASE
-
-
-$.ajax({
-    url:"{{url('cart/update/{cat_id}/{qty}')}}",  
-    method:"POST",  
-    data:{
-         cat_id : cat_id,
-         qty: qty
-    },                              
-    success: function( data ) {
-        // console.log(data);
-    }
-});
-
-
-   public function cartUpdate($cat_id, $qty)
-    {
-        $cart = Cart::find(Input::get('cat_id'));
-        $product = Product::find($cart->product_id);
-        $cart->no_of_items = Input::get('qty'); 
-        $cart->price = $product->price * $cart->no_of_items;
-        $cart->save();
-    }
-
-
-
-
-
-
-
-
-@foreach($carts as $row)
- <input type="hidden" class="cat_id" name="cat_id" value="{{$row->id}}"/>
- <!--Add name="cat_id" AS Attribute -->
-<input type="number" class="quantity{{$row->id}}" value="{{$row->no_of_items}}" name="qty" maxlength="3" max="999" min="1" /> &times;${{$row->p_price}}
-@endforeach
-
-
-
-@foreach($carts as $row)
-    $(".quantity{{$row->id}}").change(updateCart);
- @endforeach
-
- function updateCart(){
-    var qty = parseInt($(this).val());
-    var cat_id = parseInt($('.cat_id').val());
-    console.log(cat_id);
-
-      $.ajax({ 
-                        headers: {
-                          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url:'cart/update',  
-                        method:"POST",  
-                        data:{
-                            cat_id:cat_id, 
-                            qty:qty
-                        },                              
-                        success: function( data ) {
-                     // console.log(data);
-                    }
-                   });
-} 
-
-
-
-//END SAMPLE AJAX
-
-
-
-
-
-
     }
     function minus1(){
       if (count1 >= 1) {
@@ -414,7 +390,121 @@ $.ajax({
 
 
 
+/*PAGINATE LEVEL*/
+
+ 
+  $(window).on('hashchange', function() {
+
+          if (window.location.hash) {
+
+              var page = window.location.hash.replace('#', '');
+
+              if (page == Number.NaN || page <= 0) {
+
+                  return false;
+
+              }else{
+
+                  getData(page);
+
+              }
+
+          }
+
+      });
+
+
+
+  $(document).ready(function()
+
+  {
+
+       $(document).on('click', '.pagination a',function(event)
+
+      {
+
+          event.preventDefault();
+
+          $('li').removeClass('active');
+
+          $(this).parent('li').addClass('active');
+
+          var myurl = $(this).attr('href');
+
+          var page=$(this).attr('href').split('page=')[1];
+
+          getData(page);
+
+      });
+
+  });
+
+
+
+  function getData(page){
+
+          $.ajax(
+
+          {
+
+              url: '?page=' + page,
+
+              type: "get",
+
+              datatype: "html"
+
+          })
+
+          .done(function(data)
+
+          {
+
+              $("#tag_container").empty().html(data);
+
+              location.hash = page;
+
+          })
+
+          .fail(function(jqXHR, ajaxOptions, thrownError)
+
+          {
+
+                alert('No response from server');
+
+          });
+
+  }
+
+
+
+
+
+
+//PAGINATE 
+$(document).ready(function() { 
+  $(document).on('click', '.prev, .next', function() { 
+    $.ajax({
+      // the route you're requesting should return view('page_details') with the required variables for that view
+      url: '/details?from=' + $(this).attr('data-from'),
+      type: 'get'
+    }).done(response) { 
+      $('div#results').html(response);
+    }
+  });
+});
+
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+
+
 </script>
+
+
+
 
 
 

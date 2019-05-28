@@ -28,8 +28,14 @@ Route::get('/tournament', 'PagesController@tournament')->name('tournament')->mid
 Auth::routes();
 Route::get('/dailytournament', 'PagesController@dailytournament')->name('dailytournament')->middleware('authenticated');
 //Saturday Tournament Routes
+/*Auth::routes();
+Route::get('/saturdaytournament', 'PagesController@saturdaytournament')->name('saturdaytournament')->middleware('authenticated');*/
 Auth::routes();
-Route::get('/saturdaytournament', 'PagesController@saturdaytournament')->name('saturdaytournament')->middleware('authenticated');
+Route::get('/saturdaytournament',array('as'=>'saturdaytournament','uses'=>'PagesController@saturdaytournament'));
+
+Auth::routes();
+Route::get('/details', 'PagesController@details')->name('details')->middleware('authenticated');
+
 //Search
 Auth::routes();
 Route::any('/search', 'PagesController@search')->middleware('authenticated');

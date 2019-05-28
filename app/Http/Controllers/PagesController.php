@@ -11,6 +11,10 @@ use App\Prizemoney;
 use App\Tournament;
 use App\Rebuys;
 use App\Prize;
+use App\EverydayPrizeMoney;
+use App\EverydayPrize;
+use App\EverydayDuration;
+use App\EverydayTournament;
 use App\Players;
 use Excel;
 use File;
@@ -51,11 +55,15 @@ class PagesController extends Controller
 
  	public function dailytournament()
  	{
-    $firstTournament = Tournament::firstOrFail();
-    $tournaments = Tournament::all();
-    $prizemoney = Prizemoney::all();
 
-    $temp = explode('/', $firstTournament->blinds);
+    $etournament = EverydayTournament::firstOrFail();
+    $etournaments = EverydayTournament::all();
+    $eduration = EverydayDuration::firstOrFail();
+    $eprize = EverydayPrize::firstOrFail();
+    $eprizemoney = EverydayPrizeMoney::firstOrFail();
+ 
+
+    $temp = explode('/', $etournament->blinds);
     $blindParts = [
       'big' => $temp[1],
       'small' => $temp[0]
@@ -63,8 +71,8 @@ class PagesController extends Controller
 
 
     $allBlinds = [];
-    foreach ($tournaments as $tournament) {
-      $temp = explode('/', $tournament->blinds);
+    foreach ($etournaments as $etournaments) {
+      $temp = explode('/', $etournaments->blinds);
       $allBlinds[] = [
         'small' => (int)$temp[0],
         'big' => (int)$temp[1]
@@ -74,19 +82,31 @@ class PagesController extends Controller
     $duration = Duration::firstOrFail();
 
     return view('/dailytournament', compact(
-      'prizemoney', 
-      'firstTournament', 
-      'tournaments',
+ 
+      'etournaments',
       'blindParts',
       'allBlinds',
-      'duration'
+      'eduration',
+      'eprize',
+      'eprizemoney',
+      'etournament'
+
     ));
 }
 
 
 
-  public function saturdaytournament()
+  public function saturdaytournament(Request $request)
   {
+    
+    $tournamentpaginate = Tournament::paginate(6);
+
+        if ($request->ajax()) {
+            return view('page_details', compact('tournamentpaginate'));
+        }
+
+/*        return view('taglist',compact('tournamentpaginate'));*/
+
     $firstTournament = Tournament::firstOrFail();
     $tournaments = Tournament::all();
     $prizemoney = Prizemoney::all();
@@ -121,10 +141,21 @@ class PagesController extends Controller
       'duration',
       'rebuys',
       'prize',
-      'players'
+      'players',
+      'data',
+      'tournamentpaginate'
     ));
 }
 
+
+
+
+ public function  details(Request $request)
+ {
+
+  return view('page_details');
+
+ }
 
 
 

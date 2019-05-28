@@ -1,20 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Prizemoney;
+use App\Tournament;
 
 use Illuminate\Http\Request;
 
 class TournamentController extends Controller
 {
-	public function storeprize(Request $request){
-		$prizemoney = new Prizemoney;
+	
+    public function ajaxPagination(Request $request)
 
-		$prizemoney->place = $request->input('place');
-		$prizemoney->amount = $request->input('amount');
+    {
 
-		$prizemoney->save();
-
-	}
     
 }
