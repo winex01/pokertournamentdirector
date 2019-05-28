@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 25, 2019 at 10:21 AM
--- Server version: 5.7.24
--- PHP Version: 7.2.11
+-- Generation Time: May 27, 2019 at 09:44 PM
+-- Server version: 5.7.19
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -199,6 +199,42 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `players`
+--
+
+CREATE TABLE `players` (
+  `id` int(50) NOT NULL,
+  `players` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `players`
+--
+
+INSERT INTO `players` (`id`, `players`) VALUES
+(101, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prize`
+--
+
+CREATE TABLE `prize` (
+  `id` int(50) NOT NULL,
+  `totalchips` decimal(50,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `prize`
+--
+
+INSERT INTO `prize` (`id`, `totalchips`) VALUES
+(101, '100000');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prizemoney`
 --
 
@@ -213,12 +249,35 @@ CREATE TABLE `prizemoney` (
 --
 
 INSERT INTO `prizemoney` (`id`, `place`, `amount`) VALUES
-(101, '1st', 'Php 50,000'),
-(102, '2nd', 'Php 45,000'),
-(103, '3rd', 'Php 40,000'),
-(104, '4th', 'Php 35,000'),
-(105, '5th', 'Php 30,000'),
-(106, '6th', 'Php 25,000');
+(101, '1st', '.29'),
+(102, '2nd', '.1865'),
+(103, '3rd', '.1375'),
+(104, '4th', '.095'),
+(105, '5th', '.0775'),
+(106, '6th', '.0630'),
+(107, '7th', '.0525'),
+(108, '8th', '.0415'),
+(109, '9th', '.0315'),
+(110, '10th', '.0250');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rebuys`
+--
+
+CREATE TABLE `rebuys` (
+  `id` int(50) NOT NULL,
+  `rebuyscost` decimal(50,0) NOT NULL,
+  `rebuychipsvalue` decimal(50,0) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rebuys`
+--
+
+INSERT INTO `rebuys` (`id`, `rebuyscost`, `rebuychipsvalue`) VALUES
+(101, '10', '1500');
 
 -- --------------------------------------------------------
 
@@ -240,8 +299,10 @@ CREATE TABLE `tournament` (
 INSERT INTO `tournament` (`id`, `level`, `blinds`, `status`) VALUES
 (101, 'Level 1', '25/50', 'active'),
 (102, 'Level 2', '50/100', 'active'),
-(103, 'Level 3', '100/150', 'active'),
-(104, 'Level 4', '150/200', 'active');
+(103, 'Level 3', '100/200', 'active'),
+(104, 'Level 4', '200/400', 'active'),
+(105, 'Level 5', '300/600', 'active'),
+(106, 'Level 6', '400/800', 'active');
 
 -- --------------------------------------------------------
 
@@ -316,9 +377,27 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `players`
+--
+ALTER TABLE `players`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `prize`
+--
+ALTER TABLE `prize`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `prizemoney`
 --
 ALTER TABLE `prizemoney`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rebuys`
+--
+ALTER TABLE `rebuys`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -375,16 +454,34 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT for table `players`
+--
+ALTER TABLE `players`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+
+--
+-- AUTO_INCREMENT for table `prize`
+--
+ALTER TABLE `prize`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+
+--
 -- AUTO_INCREMENT for table `prizemoney`
 --
 ALTER TABLE `prizemoney`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+
+--
+-- AUTO_INCREMENT for table `rebuys`
+--
+ALTER TABLE `rebuys`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `tournament`
 --
 ALTER TABLE `tournament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `users`

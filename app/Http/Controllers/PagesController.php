@@ -9,6 +9,9 @@ use App\Http\Requests;
 use App\Masterfile;
 use App\Prizemoney;
 use App\Tournament;
+use App\Rebuys;
+use App\Prize;
+use App\Players;
 use Excel;
 use File;
 use Illuminate\Database\Eloquent\Model;
@@ -37,8 +40,16 @@ class PagesController extends Controller
  	}	
 
 
+
 //Non Admin
- 	public function home()
+
+  public function tournament()
+  {
+    return view('tournament');
+  } 
+
+
+ 	public function dailytournament()
  	{
     $firstTournament = Tournament::firstOrFail();
     $tournaments = Tournament::all();
@@ -57,12 +68,12 @@ class PagesController extends Controller
       $allBlinds[] = [
         'small' => (int)$temp[0],
         'big' => (int)$temp[1]
-      ]; 
+      ];  
     }
 
     $duration = Duration::firstOrFail();
 
-    return view('/home', compact(
+    return view('/dailytournament', compact(
       'prizemoney', 
       'firstTournament', 
       'tournaments',
@@ -74,7 +85,66 @@ class PagesController extends Controller
 
 
 
+  public function saturdaytournament()
+  {
+    $firstTournament = Tournament::firstOrFail();
+    $tournaments = Tournament::all();
+    $prizemoney = Prizemoney::all();
+    $rebuys = Rebuys::firstOrFail();
+    $prize = Prize::firstOrFail();
+    $players = Players::firstOrFail();
+
+    $temp = explode('/', $firstTournament->blinds);
+    $blindParts = [
+      'big' => $temp[1],
+      'small' => $temp[0]
+    ];
+
+
+    $allBlinds = [];
+    foreach ($tournaments as $tournament) {
+      $temp = explode('/', $tournament->blinds);
+      $allBlinds[] = [
+        'small' => (int)$temp[0],
+        'big' => (int)$temp[1]
+      ];  
+    }
+
+    $duration = Duration::firstOrFail();
+
+    return view('/saturdaytournament', compact(
+      'prizemoney',
+      'firstTournament', 
+      'tournaments',
+      'blindParts',
+      'allBlinds',
+      'duration',
+      'rebuys',
+      'prize',
+      'players'
+    ));
+}
+
+
+
+
+
+ public function  newtotalchips(Request $request)
+ {
+  $newtotalchips = $_POST['newtotalchips'];
+
+  $sql = "UPDATE Prize SET totalchips ='$newtotalchips'";
+
+Prize::where('user_id',101)->update(array(
+                         'totalchips'=>$newtotalchips,
+));
+
+ }
+
+
     
+
+
  	public function search(Request $request)
  	{
  
@@ -96,9 +166,6 @@ class PagesController extends Controller
         	return view('/home', ["data"=>$result]);
        	}
  	}
-
-
-
 
 
 
@@ -127,16 +194,6 @@ class PagesController extends Controller
           return view('/adminhome', ["data"=>$result]);
         }
   }
-
-
-
-
-
-
-
-
-
-
 
 
 

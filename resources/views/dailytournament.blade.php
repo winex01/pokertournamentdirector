@@ -1,12 +1,13 @@
 @extends('layouts.guest')
 @section('content')
 
+
     <div class="row">
    <!--      <center><div class="col-sm-10"><h1>Emperor City Poker</h1></div></center> -->
         <div class="col-sm-3"><!--left col-->
 
         <ul class="list-group">
-            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>EMPEROR CITY POKER</b></li>
+            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - TURBO TOURNAMENT</b></li>
             <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b style="font-size: 25px; color:#0a0;"><input style="width:40px; border:0;" value="0" id="count">&nbsp&nbsp</b> 
                  <button type="button" class="btn btn-xs btn-danger" id="moins" onclick="minus()"><i class="glyphicon glyphicon-minus"></i></button>
                  <button type="button" class="btn btn-xs btn-primary" id="plus" onclick="plus()"><i class="glyphicon glyphicon-plus"></i></button>
@@ -14,23 +15,27 @@
             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Rebuys</strong></span><b style="font-size: 25px; color:#0a0;"><input style="width:40px; border:0;" value="0" id="count1">&nbsp&nbsp</b> 
                 <button type="button" class="btn btn-xs btn-danger" id="moins1" onclick="minus1()"><i class="glyphicon glyphicon-minus"></i></button>
                  <button type="button" class="btn btn-xs btn-primary" id="plus1" onclick="plus1()"><i class="glyphicon glyphicon-plus"></i></button></li>
-             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Ave. Chips</strong></span><b style="font-size: 25px; color:black;">1,000</b> </li>
-              <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Total Chips</strong></span><b style="font-size: 25px; color:black;">11,000</b> </li>
+             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Ave. Chips</strong></span><b><input value="0" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
+              <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Total Chips</strong></span><b><input value="0" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
 
            
           </ul> 
 
+         
              <ul class="list-group">
-            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>CHIPS</b>  <button data-toggle="modal" data-target="" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button></li>
-            <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('chips/red2.jpg')}}" style="height: 75px; width: 75px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 50px; color:black;">25</b></li>
+            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>CHIPS</b>  <!-- <button data-toggle="modal" data-target="" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --></li>
+            <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/10.png')}}" style="height: 60px; width: 60px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 40px; color:black;">10</b></li>
+             <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/t5.png')}}" style="height: 60px; width: 60px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 40px; color:black;">25</b></li>
              
-               <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('chips/black.jpg')}}" style="height: 75px; width: 75px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 50px; color:black;">100</b></li>
+                 <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/100.png')}}" style="height: 60px; width: 60px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 40px; color:black;">100</b></li>
 
-                 <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('chips/green.jpg')}}" style="height: 75px; width: 75px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 50px; color:black;">1,000</b></li>
+                   <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/1000.png')}}" style="height: 60px; width: 60px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 40px; color:black;">1000</b></li>
 
-                   <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('chips/yellow.jpg')}}" style="height: 75px; width: 75px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 50px; color:black;">10,000</b></li>
+                   <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/10000.png')}}" style="height: 60px; width: 60px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 40px; color:black;">10,000</b></li>
+ 
  
           </ul> 
+
 
  
         </div><!--/col-3-->
@@ -38,52 +43,43 @@
 
         <div class="col-sm-6">
         
-                <center><span style="font-size: 45px; color:black; "><b>POKER TOURNAMENT DIRECTOR</b></span></center>
-
           <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 20px;">
               <center>
-                <h1 id="round" style="margin-bottom: -50px;">{{ $firstTournament->level }}</h1>
-                <div class="clock" style="font-size: 200px; color:#0a0; font-family:'digital-clock-font'"><b>{{ $duration->in_minutes }}</b></div>
+                <h1 id="round" style="margin-bottom: -50px; font-size: 50px; color: white;">{{ $firstTournament->level }}</h1>
+                <div class="clock" style="font-size: 200px; color:#0a0; font-family:'digital-clock-font'">{{ $duration->in_minutes }}</div>
                 
-                <div id="poker_blinds" style="margin-top: -50px; margin-bottom: 20px; font-size: 30px;">
-                  <div class="blinds">
+                <div id="poker_blinds" style="margin-top: -65px; margin-bottom: 20px; font-size: 35px; ">
+                  <div class="blinds" style="font-size: 45px; color:white; ">
                     <span class="small-blind">{{ $blindParts['small'] }}</span>
                     <span class="separator">/</span>
                     <span class="big-blind">{{ $blindParts['big'] }}</span>
                   </div>
-                  <span>Blinds</span>
-                </div>
+                  <span style="font-size: 35px; color:black;"></span><!-- blinds -->
+                </div><br>
 
-                <br>
                 <button type="button" class="btn btn-sm btn-primary" id="poker_play_pause">
                   <i class="glyphicon glyphicon-pause"></i> /
                   <i class="glyphicon glyphicon-play"></i> 
                   <span id="play_pause_div">Play</span>
                 </button>
                 <span style="margin-left: 50px;"></span>
-                <button type="button" class="btn btn-sm btn-success" id="poker_next_round"><i class="glyphicon glyphicon-arrow-right"></i> Next Round</button>
+                <button type="button" class="btn btn-sm btn-success" id="poker_next_round"><i class="glyphicon glyphicon-arrow-right"></i> Next</button>
+                <span style="margin-left: 50px;"></span>
+                <button type="button" class="btn btn-sm btn-warning reset"><i class="glyphicon glyphicon-refresh"></i> Reset</button>
+
               </center>
               <br>
-              <br>
-
-              <div class="pull-right">
-                <button type="button" class="btn btn-sm btn-warning reset"><i class="glyphicon glyphicon-pause"></i> Reset</button>
-              </div>
-              
-              <br>
-              <br>
-              
-              <audio id="soundHandle" style="display: none;"></audio>
 
               <ul class="list-group" id="tournament-timers">
+                <li class="list-group-item text-muted" style="font-size: 20px; background: black; color: white; font-family:'digital-clock-font'">LEVELS<span class="pull-right">BLINDS</span></li>
                 @foreach ($tournaments as $tournament)
-                  <li class="list-group-item text-muted">NEXT BLINDS:</li>
+  
                   <li class="list-group-item text-right">
                     <span class="pull-left">
-                      <span class="pull-left" style="font-size: 20px; color: gray;">
-                        <strong>{{ $tournament->level }}</strong>
+                      <span class="pull-left">
+                        <strong style="font-size: 20px;">{{ $tournament->level }}</strong>
                       </span>
-                    </span><b style="font-size: 25px; color:gray;">{{ $tournament->blinds }}</b>
+                    </span><b  style="font-size: 20px;">{{ $tournament->blinds }}</b>
                   </li>
                 @endforeach
               </ul>  
@@ -93,7 +89,7 @@
 
         <div class="col-sm-3">
             <ul class="list-group">
-            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>PRIZE MONEY</b> <button data-toggle="modal" data-target="#addformmodal" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button></li>
+            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>PRIZE MONEY</b> <!-- <button data-toggle="modal" data-target="#addformmodal" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --></li>
             @foreach($prizemoney as $prize)
             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>{{$prize->place}}</strong></span><b style="font-size: 30px; color:red;">{{$prize->amount}}</b></li>
             @endforeach
@@ -105,11 +101,7 @@
           </div><!--/tab-content-->
     </div><!--/row-->
                                                       
-<!-- <audio id="alarm" controls="controls">
-  <source src="{{asset('sound/alert.mp3')}}" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio> -->
-
+    <audio id="soundHandle" style="display: none;"></audio>
 
 
 @push('custom-scripts')
@@ -138,7 +130,9 @@
         return !interval_id ? true : false;
       },
       playAlarm: function () {
-        $('#alarm')[0].play();
+        soundHandle.src = '{{asset('sound/alertnext1.mp3')}}';
+        soundHandle.play();
+
       },
       reset: function () {
         // reset timer
@@ -208,6 +202,7 @@
         $('.clock').html(minute + ":" + second);
         
         if (timer <= 0) {
+
           this.startNextRound();
           
           this.playAlarm();
@@ -292,7 +287,7 @@
   
   //Plus Minus Players
 
-    var count = 1;
+    var count = 0;
     var countEl = document.getElementById("count");
     function plus(){
         count++;
@@ -305,11 +300,12 @@
       }  
     }
 
-    var count1 = 1;
+    var count1 = 0;
     var countEl1 = document.getElementById("count1");
     function plus1(){
         count1++;
         countEl1.value = count1;
+        
     }
     function minus1(){
       if (count1 >= 1) {
@@ -370,7 +366,7 @@
   src: url('../../font/digital-7 (mono).ttf');
 }
 
-
 </style>
+
 @endsection
 

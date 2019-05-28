@@ -21,12 +21,22 @@ Route::get('/logout', 'PagesController@logout')->name('logout')->middleware('aut
 //Welcome Route
 Auth::routes();
 Route::get('/', 'PagesController@welcome');
-//Home Routes
+//Tournaments Routes
 Auth::routes();
-Route::get('/home', 'PagesController@home')->name('home')->middleware('authenticated');
+Route::get('/tournament', 'PagesController@tournament')->name('tournament')->middleware('authenticated');
+//Daily Tournament Routes
+Auth::routes();
+Route::get('/dailytournament', 'PagesController@dailytournament')->name('dailytournament')->middleware('authenticated');
+//Saturday Tournament Routes
+Auth::routes();
+Route::get('/saturdaytournament', 'PagesController@saturdaytournament')->name('saturdaytournament')->middleware('authenticated');
 //Search
 Auth::routes();
 Route::any('/search', 'PagesController@search')->middleware('authenticated');
+
+
+Auth::routes();
+Route::get('/newtotalchips', 'PagesController@newtotalchips')->name('newtotalchips')->middleware('authenticated');
 
 
 
