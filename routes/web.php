@@ -36,7 +36,7 @@ Route::any('/search', 'PagesController@search')->middleware('authenticated');
 
 
 Auth::routes();
-Route::get('/newtotalchips', 'PagesController@newtotalchips')->name('newtotalchips')->middleware('authenticated');
+Route::get('/updateprize', 'PagesController@updateprize')->name('updateprize')->middleware('authenticated');
 
 
 

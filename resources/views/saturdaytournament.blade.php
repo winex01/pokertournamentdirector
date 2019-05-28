@@ -11,14 +11,14 @@
                  <button type="button" class="btn btn-xs btn-danger" id="moins" onclick="minus()"><i class="glyphicon glyphicon-minus"></i></button>
                  <button type="button" class="btn btn-xs btn-primary" id="plus" onclick="plus()"><i class="glyphicon glyphicon-plus"></i></button>
 
-            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Rebuys</strong></span><b style="font-size: 25px; color:#0a0;"><input style="width:50px; border:0;" value="0" id="rebuy">&nbsp&nbsp</b> 
+            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Rebuys</strong></span><b style="font-size: 25px; color:#0a0;"><input style="width:70px; border:0;" value="0" id="rebuy">&nbsp&nbsp</b> 
                 <button type="button" class="btn btn-xs btn-danger" id="moins1" onclick="minus1()"><i class="glyphicon glyphicon-minus"></i></button>
                  <button type="button" class="btn btn-xs btn-primary" id="plus1" onclick="plus1()"><i class="glyphicon glyphicon-plus"></i></button></li>
        
-       <!--       <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Ave. Chips</strong></span><b><input value="0"  id="average" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
-        -->  
-          <?php $totalchips = number_format($prize->totalchips);?>
-             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Total Chips</strong></span><b><input value="{{ $totalchips }}" id="totalchips" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
+       <!--       <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Ave. Chips</strong></span><b><input value="0"  id="average" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>-->
+          
+          <?php $totalchip = number_format($prize->totalchips);?>
+             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Total Chips</strong></span><b><input type="text" value="{{ $totalchip }}" id="tchips" name="tchips" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
            
           </ul> 
 
@@ -313,38 +313,92 @@
     var countEl1 = document.getElementById("rebuy");
     var rebuycost = '{{ $rebuys->rebuyscost }}';
     var rebuychipsval = '{{ $rebuys->rebuychipsvalue }}';
-    var players = document.getElementById('players').value;         //need to get the integer value
-    var average = document.getElementById("average").value;         //need to get the integer value
-    var totalchips = document.getElementById("totalchips").value;  //need to get the integer value
-    function plus1(){
+    var totalchips = '{{ $prize->totalchips }}';  //need to get the integer value
+
+     function plus1(){
         count1++;
         countEl1.value = count1;
+
         var newtotalchips = (totalchips+rebuychipsval);
-        totalchips.value = newtotalchips;
-        var newaverage = (newtotalchips/players);
-        average.value = newaverage;
+
+   
 
 
-        //get the input value
-        $.ajax({
-            //the url to send the data to
-            url: "/updateprize",
-            //the data to send to
-            data: {newtotalchips: $newtotalchips},
-            //type. for eg: GET, POST
-            type: "POST",
-            //on success
-            success: function(data){
-                console.log("***********Success***************"); //You can remove here
-                console.log(data); //You can remove here
-            },
-            //on error
-            error: function(){
-                    console.log("***********Error***************"); //You can remove here
-                    console.log(data); //You can remove here
-            }
-        });
-    
+
+
+
+
+
+//SAMPLE AJAX UPDATE DATABASE
+
+
+$.ajax({
+    url:"{{url('cart/update/{cat_id}/{qty}')}}",  
+    method:"POST",  
+    data:{
+         cat_id : cat_id,
+         qty: qty
+    },                              
+    success: function( data ) {
+        // console.log(data);
+    }
+});
+
+
+   public function cartUpdate($cat_id, $qty)
+    {
+        $cart = Cart::find(Input::get('cat_id'));
+        $product = Product::find($cart->product_id);
+        $cart->no_of_items = Input::get('qty'); 
+        $cart->price = $product->price * $cart->no_of_items;
+        $cart->save();
+    }
+
+
+
+
+
+
+
+
+@foreach($carts as $row)
+ <input type="hidden" class="cat_id" name="cat_id" value="{{$row->id}}"/>
+ <!--Add name="cat_id" AS Attribute -->
+<input type="number" class="quantity{{$row->id}}" value="{{$row->no_of_items}}" name="qty" maxlength="3" max="999" min="1" /> &times;${{$row->p_price}}
+@endforeach
+
+
+
+@foreach($carts as $row)
+    $(".quantity{{$row->id}}").change(updateCart);
+ @endforeach
+
+ function updateCart(){
+    var qty = parseInt($(this).val());
+    var cat_id = parseInt($('.cat_id').val());
+    console.log(cat_id);
+
+      $.ajax({ 
+                        headers: {
+                          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url:'cart/update',  
+                        method:"POST",  
+                        data:{
+                            cat_id:cat_id, 
+                            qty:qty
+                        },                              
+                        success: function( data ) {
+                     // console.log(data);
+                    }
+                   });
+} 
+
+
+
+//END SAMPLE AJAX
+
+
 
 
 

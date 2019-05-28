@@ -23,15 +23,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
  
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/skins/skin-yellow.min.css')}}">
 
-  </head>
+
+
+
+  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" id="bootstrap-css">
+  <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
+  
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
  
-  <body class="hold-transition skin-yellow sidebar-collapse sidebar-mini" style="background:black;">
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/profileapp.js') }}" defer></script>
+    <script src="{{ asset('js/jquery2.min.js') }}" ></script>
+    <script src="{{ asset('js/bootstrap2.min.js') }}"></script>
+
+
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap3.3.7/css/bootstrap.min.css') }}">
+
+
+ 
+  </head> 
+ 
+  <body class="hold-transition skin-yellow sidebar-collapse sidebar-mini" style="background:white;">
 
        <!-- Main Header -->
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="{{ url('/tournament') }}" class="logo">
+        <a href="{{ url('/') }}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b><i class="glyphicon glyphicon-home" style="color:black;""></i></b></span>
           <!-- logo for regular state and mobile devices -->
@@ -40,13 +71,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
-                          <marquee><span style="color: white; font-size: 30px; font-family:'digital-clock-font'"><img src="{{ asset('Emperor City Poker Header.jpg') }}" class="avatar img-circle img-thumbnail" alt="avatar" style="width:40px; height: 40px;"> <b>EMPEROR CITY POKER TOURNAMENT - 2nd Floor Gaming Area, Waterfront Airport Hotel and Casino, Lapu-Lapu City Cebu, Philippines</b></span></marquee>
+                          <marquee><span style="color: white; font-size: 25px; font-family:'digital-clock-font'"><img src="{{ asset('Emperor City Poker Header.jpg') }}" class="avatar img-circle img-thumbnail" alt="avatar" style="width:40px; height: 40px;"> <b>EMPEROR CITY POKER TOURNAMENT - 2nd Floor Gaming Area, Waterfront Airport Hotel and Casino, Lapu-Lapu City Cebu, Philippines</b></span></marquee>
       </header>
 
+ 
        <!-- Main content -->
-        <section class="content" style="background:black;">
+        <section class="content" style="background:white;">
 
-          <!-- Your Page Content Here -->
 
                @yield('content')
 

@@ -129,15 +129,11 @@ class PagesController extends Controller
 
 
 
- public function  newtotalchips(Request $request)
+ public function  updateprize(Request $request)
  {
   $newtotalchips = $_POST['newtotalchips'];
 
-  $sql = "UPDATE Prize SET totalchips ='$newtotalchips'";
-
-Prize::where('user_id',101)->update(array(
-                         'totalchips'=>$newtotalchips,
-));
+ize::where('user_id',101)->update(array('totalchips'=>$newtotalchips));
 
  }
 

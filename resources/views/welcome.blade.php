@@ -18,7 +18,7 @@
                 <div class="inner">
                   <p style="font-size:25px;">Administrator</p>
                 </div>
-                <a href="{{ url('/admin') }}" class="small-box-footer">Sign In <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+                <a href="{{ url('/admin/login') }}" class="small-box-footer">Sign In <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
               </div>
            
               <!-- small box -->
