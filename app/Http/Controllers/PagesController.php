@@ -29,6 +29,11 @@ use Session;
 class PagesController extends Controller
 {
 
+
+  protected $posts_per_page = 6;
+
+
+
   public function logout(){
         Session::flush();
    /*     Auth::guard($this->getGuard())->logout();*/
@@ -55,6 +60,8 @@ class PagesController extends Controller
 
  	public function dailytournament()
  	{
+
+    $posts = EverydayTournament::paginate($this->posts_per_page);
 
     $etournament = EverydayTournament::firstOrFail();
     $etournaments = EverydayTournament::all();
@@ -89,23 +96,27 @@ class PagesController extends Controller
       'eduration',
       'eprize',
       'eprizemoney',
-      'etournament'
+      'etournament',
+      'posts'
 
     ));
 }
 
 
 
+  
   public function saturdaytournament(Request $request)
   {
     
-    $tournamentpaginate = Tournament::paginate(6);
+        $posts = Tournament::paginate($this->posts_per_page);
 
-        if ($request->ajax()) {
-            return view('page_details', compact('tournamentpaginate'));
+        if($request->ajax()) {
+            return [
+                'posts' => view('ajax_tpage')->with(compact('posts'))->render(),
+                'next_page' => $posts->nextPageUrl()
+            ];
         }
 
-/*        return view('taglist',compact('tournamentpaginate'));*/
 
     $firstTournament = Tournament::firstOrFail();
     $tournaments = Tournament::all();
@@ -143,9 +154,18 @@ class PagesController extends Controller
       'prize',
       'players',
       'data',
-      'tournamentpaginate'
+      'posts'
     ));
 }
+
+
+
+
+    public function fetchNextPostsSet($page) {
+
+
+
+    }
 
 
 

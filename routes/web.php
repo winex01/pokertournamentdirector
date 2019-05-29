@@ -30,8 +30,12 @@ Route::get('/dailytournament', 'PagesController@dailytournament')->name('dailyto
 //Saturday Tournament Routes
 /*Auth::routes();
 Route::get('/saturdaytournament', 'PagesController@saturdaytournament')->name('saturdaytournament')->middleware('authenticated');*/
+Route::group(['middleware' => ['web']], function () {
+
 Auth::routes();
 Route::get('/saturdaytournament',array('as'=>'saturdaytournament','uses'=>'PagesController@saturdaytournament'));
+
+});
 
 Auth::routes();
 Route::get('/details', 'PagesController@details')->name('details')->middleware('authenticated');

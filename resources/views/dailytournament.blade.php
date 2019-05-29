@@ -79,18 +79,47 @@
               </center> </form><br>
               
 
-              <ul class="list-group" id="tournament-timers">
+
+              <ul id="pagination" class="list-group posts endless-pagination" data-next-page="{{ $posts->nextPageUrl() }}">
                 <li class="list-group-item text-muted" style="font-size: 20px; background: black; color: white; font-family:'digital-clock-font'">LEVELS<span class="pull-right">BLINDS</span></li>
-    
+                
+    @foreach ($posts as $post)
+  
                   <li class="list-group-item text-right">
                     <span class="pull-left">
                       <span class="pull-left">
-                        <strong style="font-size: 20px;">{{ $etournament->level }}</strong>
+                        <strong style="font-size: 25px;">{{ $post->level }}</strong>
                       </span>
-                    </span><b  style="font-size: 20px;">{{ $etournament->blinds }}</b>
+                    </span><b  style="font-size: 25px;">{{ $post->blinds }}</b>
                   </li>
-        
-              </ul>  
+                @endforeach
+          
+              <center>{!! $posts->render() !!}</center>
+
+                  </ul>  
+
+
+<script>
+
+$(document).ready(function() {
+
+
+
+    $('body').on('click', '#pagination', function(e){
+
+        e.preventDefault();
+        var url = $(this).attr('href');
+
+        $.get(url, function(data){
+            $('.posts').html(data);
+        });
+
+    });
+
+})
+
+</script>
+
        
         </div><!--/col-6-->
 
@@ -99,12 +128,11 @@
             <ul class="list-group">
             <li class="list-group-item" style="background: black;"><b style="font-size: 25px; color: white; font-family:'digital-clock-font'">PRIZE MONEY</b> <!-- <button data-toggle="modal" data-target="#addformmodal" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --> 
 
-           
-            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong> </strong></span><b style="font-size: 30px; color:red;"></b></li>
-        
+   
+            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>{{$eprizemoney->place}}</strong></span><b style="font-size: 30px; color:red;"></b>{{$eprizemoney->place}}</li>
+      
             </ul> 
             </div><!--/col-3-->
-
             </div> 
            </div><!--/tab-pane-->
           </div><!--/tab-content-->

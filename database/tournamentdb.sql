@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 28, 2019 at 07:23 PM
+-- Generation Time: May 29, 2019 at 07:55 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.7
 
@@ -85,6 +85,27 @@ INSERT INTO `durations` (`id`, `in_seconds`, `in_minutes`, `created_at`, `update
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `eprizemoney`
+--
+
+CREATE TABLE `eprizemoney` (
+  `id` int(50) NOT NULL,
+  `place` varchar(50) NOT NULL,
+  `amount` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `eprizemoney`
+--
+
+INSERT INTO `eprizemoney` (`id`, `place`, `amount`) VALUES
+(101, '1st', '.45'),
+(102, '2nd', '33.75'),
+(103, '3rd', '21.24');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `everydayduration`
 --
 
@@ -118,27 +139,6 @@ CREATE TABLE `everydayprize` (
 
 INSERT INTO `everydayprize` (`id`, `totalprize`) VALUES
 (101, '8888');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `everydayprizemoney`
---
-
-CREATE TABLE `everydayprizemoney` (
-  `id` int(50) NOT NULL,
-  `place` varchar(50) NOT NULL,
-  `amount` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `everydayprizemoney`
---
-
-INSERT INTO `everydayprizemoney` (`id`, `place`, `amount`) VALUES
-(101, '1st', '.10'),
-(103, '2nd', '.20'),
-(103, '3rd', '.30');
 
 -- --------------------------------------------------------
 
@@ -432,6 +432,12 @@ ALTER TABLE `durations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `eprizemoney`
+--
+ALTER TABLE `eprizemoney`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `everydayduration`
 --
 ALTER TABLE `everydayduration`
@@ -533,6 +539,12 @@ ALTER TABLE `durations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `eprizemoney`
+--
+ALTER TABLE `eprizemoney`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+
+--
 -- AUTO_INCREMENT for table `everydayduration`
 --
 ALTER TABLE `everydayduration`
@@ -596,7 +608,7 @@ ALTER TABLE `rebuys`
 -- AUTO_INCREMENT for table `tournament`
 --
 ALTER TABLE `tournament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `users`

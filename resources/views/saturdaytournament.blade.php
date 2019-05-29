@@ -8,7 +8,7 @@
            // $ave = number_format($totalchip/$player);
            // $totalchips = number_format($totalchip);
         ?>
-
+ 
 
     <div class="row">
    <!--      <center><div class="col-sm-10"><h1>Emperor City Poker</h1></div></center> -->
@@ -79,25 +79,49 @@
               </center> </form><br>
               
 
-              <ul class="list-group" id="tag_container">
+
+
+              <ul id="pagination" class="list-group posts endless-pagination" data-next-page="{{ $posts->nextPageUrl() }}">
                 <li class="list-group-item text-muted" style="font-size: 20px; background: black; color: white; font-family:'digital-clock-font'">LEVELS<span class="pull-right">BLINDS</span></li>
                 
-    @foreach ($tournamentpaginate as $tag)
+    @foreach ($posts as $post)
   
                   <li class="list-group-item text-right">
                     <span class="pull-left">
                       <span class="pull-left">
-                        <strong style="font-size: 25px;">{{ $tag->level }}</strong>
+                        <strong style="font-size: 25px;">{{ $post->level }}</strong>
                       </span>
-                    </span><b  style="font-size: 25px;">{{ $tag->blinds }}</b>
+                    </span><b  style="font-size: 25px;">{{ $post->blinds }}</b>
                   </li>
                 @endforeach
           
-              <center>{!! $tournamentpaginate->render() !!}</center>
+              <center>{!! $posts->render() !!}</center>
 
                   </ul>  
 
-        </div><!--/col-6-->
+
+<script>
+
+$(document).ready(function() {
+
+
+
+    $('body').on('click', '#pagination', function(e){
+
+        e.preventDefault();
+        var url = $(this).attr('href');
+
+        $.get(url, function(data){
+            $('.posts').html(data);
+        });
+
+    });
+
+})
+
+</script>
+
+</div><!--/col-6-->
 
 
         <div class="col-sm-3">
@@ -340,96 +364,6 @@
         countEl1.value = count1;
       }  
     }
-
-
-
-
-/*PAGINATE LEVEL*/
-
- 
-  $(window).on('hashchange', function() {
-
-          if (window.location.hash) {
-
-              var page = window.location.hash.replace('#', '');
-
-              if (page == Number.NaN || page <= 0) {
-
-                  return false;
-
-              }else{
-
-                  getData(page);
-
-              }
-
-          }
-
-      });
-
-
-
-  $(document).ready(function()
-
-  {
-
-       $(document).on('click', '.pagination a',function(event)
-
-      {
-
-          event.preventDefault();
-
-          $('li').removeClass('active');
-
-          $(this).parent('li').addClass('active');
-
-          var myurl = $(this).attr('href');
-
-          var page=$(this).attr('href').split('page=')[1];
-
-          getData(page);
-
-      });
-
-  });
-
-
-
-  function getData(page){
-
-          $.ajax(
-
-          {
-
-              url: '?page=' + page,
-
-              type: "get",
-
-              datatype: "html"
-
-          })
-
-          .done(function(data)
-
-          {
-
-              $("#tag_container").empty().html(data);
-
-              location.hash = page;
-
-          })
-
-          .fail(function(jqXHR, ajaxOptions, thrownError)
-
-          {
-
-                alert('No response from server');
-
-          });
-
-  }
-
-
 
 
 
