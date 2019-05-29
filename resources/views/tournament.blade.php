@@ -3,7 +3,7 @@
 
  
   <!-- Small boxes (Stat box) -->
-<br><br><br>
+          <br><br><br>
           <div class="row">
 
              <div class="col-lg-3 col-xs-3">
@@ -39,13 +39,13 @@
 
 
 
+<!-- Digital Clock Font -->
 <style type="text/css">
-  
-@font-face{
-  font-family: 'digital-clock-font';
-  src: url('../../font/digital-7 (mono).ttf');
-}
-  
+    @font-face{
+      font-family: 'digital-clock-font';
+      src: url('../../font/digital-7 (mono).ttf');
+    }
 </style>
+
 @endsection
 

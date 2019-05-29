@@ -2,22 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Album;
-use App\Duration;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Masterfile;
-use App\Prizemoney;
-use App\Tournament;
-use App\Rebuys;
-use App\Prize;
-use App\EverydayPrizeMoney;
-use App\EverydayPrize;
-use App\EverydayDuration;
-use App\EverydayTournament;
-use App\Players;
-use Excel;
-use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,12 +13,24 @@ use Illuminate\Support\Facades\URL;
 use Laravel\Scout\Searchable;
 use Session;
 
+//Daily Tournament Databases
+use App\EverydayDuration;
+use App\EverydayTournament;
+use App\EverydayPrizeMoney;
+use App\EverydayPrize;
+
+//Saturday Tournament Databases
+use App\Duration;
+use App\Tournament;
+use App\Prizemoney;
+use App\Prize;
+
+
 class PagesController extends Controller
 {
 
 
   protected $posts_per_page = 6;
-
 
 
   public function logout(){
@@ -40,42 +39,30 @@ class PagesController extends Controller
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
     
-   
-    public function welcome()
+  public function welcome()
  	{
- 		$result =DB::table('banner')->paginate(3);
-        return view('welcome', ["data"=>$result]);
-/* 		return view('welcome');*/
+ 		return view('welcome');
  	}	
-
-
-
-//Non Admin
 
   public function tournament()
   {
     return view('tournament');
   } 
 
-
  	public function dailytournament()
  	{
-
     $posts = EverydayTournament::paginate($this->posts_per_page);
-
+    $eduration = EverydayDuration::firstOrFail();
     $etournament = EverydayTournament::firstOrFail();
     $etournaments = EverydayTournament::all();
-    $eduration = EverydayDuration::firstOrFail();
+    $eprizemoney = EverydayPrizeMoney::all();
     $eprize = EverydayPrize::firstOrFail();
-    $eprizemoney = EverydayPrizeMoney::firstOrFail();
- 
 
     $temp = explode('/', $etournament->blinds);
     $blindParts = [
       'big' => $temp[1],
       'small' => $temp[0]
     ];
-
 
     $allBlinds = [];
     foreach ($etournaments as $etournaments) {
@@ -86,51 +73,34 @@ class PagesController extends Controller
       ];  
     }
 
-    $duration = Duration::firstOrFail();
-
     return view('/dailytournament', compact(
- 
       'etournaments',
       'blindParts',
       'allBlinds',
       'eduration',
-      'eprize',
-      'eprizemoney',
       'etournament',
+      'eprizemoney',
+      'eprize',
       'posts'
 
     ));
-}
+  }
 
-
-
-  
   public function saturdaytournament(Request $request)
   {
     
-        $posts = Tournament::paginate($this->posts_per_page);
-
-        if($request->ajax()) {
-            return [
-                'posts' => view('ajax_tpage')->with(compact('posts'))->render(),
-                'next_page' => $posts->nextPageUrl()
-            ];
-        }
-
-
+    $posts = Tournament::paginate($this->posts_per_page);
+    $duration = Duration::firstOrFail();
     $firstTournament = Tournament::firstOrFail();
     $tournaments = Tournament::all();
     $prizemoney = Prizemoney::all();
-    $rebuys = Rebuys::firstOrFail();
     $prize = Prize::firstOrFail();
-    $players = Players::firstOrFail();
 
     $temp = explode('/', $firstTournament->blinds);
     $blindParts = [
       'big' => $temp[1],
       'small' => $temp[0]
     ];
-
 
     $allBlinds = [];
     foreach ($tournaments as $tournament) {
@@ -141,8 +111,6 @@ class PagesController extends Controller
       ];  
     }
 
-    $duration = Duration::firstOrFail();
-
     return view('/saturdaytournament', compact(
       'prizemoney',
       'firstTournament', 
@@ -150,50 +118,18 @@ class PagesController extends Controller
       'blindParts',
       'allBlinds',
       'duration',
-      'rebuys',
       'prize',
-      'players',
-      'data',
       'posts'
     ));
-}
+  }
 
-
-
-
-    public function fetchNextPostsSet($page) {
-
-
-
-    }
-
-
-
-
- public function  details(Request $request)
- {
-
-  return view('page_details');
+ public function fetchNextPostsSet($page) {
 
  }
 
-
-
-
- public function  updateprize(Request $request)
+   
+ public function search(Request $request)
  {
-  $newtotalchips = $_POST['newtotalchips'];
-
-ize::where('user_id',101)->update(array('totalchips'=>$newtotalchips));
-
- }
-
-
-    
-
-
- 	public function search(Request $request)
- 	{
  
    		$search = Input::get('search');
         if($search != ''){
@@ -214,81 +150,12 @@ ize::where('user_id',101)->update(array('totalchips'=>$newtotalchips));
        	}
  	}
 
-
-
-
-
-//ADMIN SIDE
-
-  public function adminsearch(Request $request)
-  {
- 
-      $search = Input::get('search');
-        if($search != ''){
-          $data = Masterfile::where('firstname', 'LIKE', '%'.$search.'%')
-                  ->orWhere('middlename', 'LIKE', '%'.$search.'%')
-                  ->orWhere('lastname', 'LIKE', '%'.$search.'%')
-                  ->paginate(3)
-                  ->setpath('');
-            $data->appends(array('search' => Input::get('search'),));
-      if(count($data)>0){
-        return view('/adminhome')->withData($data);
-      } 
-      return view('/adminhome')->withMessage("No Results found!");
-        }
-        else{
-          $result =DB::table('masterfile')->paginate(3);
-          return view('/adminhome', ["data"=>$result]);
-        }
-  }
-
-
-
-
-
-
  	public function destroy($id) {
       DB::delete('delete from manpower where id = ?',[$id]);
       
       session()->flash('status', 'Record deleted Successfully.');
       return redirect('/home');
    }
-
-
- 	public function destroyall(Request $request) {
- 	  
-
-/*if ( ! $request->has('selector')) {
-    $checkboxValue = $request->input('selector');
-    echo  $checkboxValue;
- }
-*/
-
-/* 	 $id=$request->input('selector');*/
-
- 
-/*	 $key = count($id);
-*/	//multi delete using checkbox as a selector
-	
-/*
-	if($key	<> 0){
-	for($i=0;$i<$key;$i++){
-
-      DB::delete('delete from manpower where id = ?',$id[$i]);
-      
-      session()->flash('status', 'Records deleted Successfully.');
-      return redirect('/home');
-      	}
-	}else{
-	  session()->flash('status', 'Please select record to be deleted.'.$key);
-      return redirect('/home');
-	}
-*/
-   	}
-
-
-
-
 
 
 }

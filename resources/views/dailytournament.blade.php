@@ -1,21 +1,12 @@
 @extends('layouts.guest')
 @section('content')
 
-
-        <?php 
-           // $totalchip = $prize->totalchips;
-           //$player = number_format($players->players);
-           // $ave = number_format($totalchip/$player);
-           // $totalchips = number_format($totalchip);
-        ?>
-
-
     <div class="row">
    <!--      <center><div class="col-sm-10"><h1>Emperor City Poker</h1></div></center> -->
         <div class="col-sm-3"><!--left col-->
 
         <ul class="list-group">
-            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - TURBO TOURNAMENT</b></li>
+            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - TURBO TOURNAMENT</b></li>
             <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b style="font-size: 25px; color:#0a0;"><input style="text-align: center; width:50px; border:0;" value="0" id="player">&nbsp&nbsp</b> 
                  <button type="button" class="btn btn-xs btn-danger" id="moins" onclick="minus()"><i class="glyphicon glyphicon-minus"></i></button>
                  <button type="button" class="btn btn-xs btn-primary" id="plus" onclick="plus()"><i class="glyphicon glyphicon-plus"></i></button>
@@ -32,7 +23,7 @@
 
          
              <ul class="list-group">
-            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>CHIPS</b>  <!-- <button data-toggle="modal" data-target="" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --></li>
+            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>CHIPS</b>  <!-- <button data-toggle="modal" data-target="" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --></li>
             <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/10.png')}}" style="height: 70px; width: 70px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 45px; color:black;">10</b></li>
              <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/t5.png')}}" style="height: 70px; width: 70px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 45px; color:black;">25</b></li>
              
@@ -99,26 +90,26 @@
                   </ul>  
 
 
-<script>
+        <script>
 
-$(document).ready(function() {
+        $(document).ready(function() {
 
 
 
-    $('body').on('click', '#pagination', function(e){
+            $('body').on('click', '#pagination', function(e){
 
-        e.preventDefault();
-        var url = $(this).attr('href');
+                e.preventDefault();
+                var url = $(this).attr('href');
 
-        $.get(url, function(data){
-            $('.posts').html(data);
-        });
+                $.get(url, function(data){
+                    $('.posts').html(data);
+                });
 
-    });
+            });
 
-})
+        })
 
-</script>
+        </script>
 
        
         </div><!--/col-6-->
@@ -126,11 +117,19 @@ $(document).ready(function() {
 
         <div class="col-sm-3">
             <ul class="list-group">
-            <li class="list-group-item" style="background: black;"><b style="font-size: 25px; color: white; font-family:'digital-clock-font'">PRIZE MONEY</b> <!-- <button data-toggle="modal" data-target="#addformmodal" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --> 
+            <li class="list-group-item" style="background: black;"><b style="font-size: 30px; color: white; font-family:'digital-clock-font'">PRIZE MONEY</b> <!-- <button data-toggle="modal" data-target="#addformmodal" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --> 
 
-   
-            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>{{$eprizemoney->place}}</strong></span><b style="font-size: 30px; color:red;"></b>{{$eprizemoney->place}}</li>
-      
+            @foreach($eprizemoney as $prizemoney)
+            <?php 
+            $tchips = $eprize->totalprize;
+            $nprize = $prizemoney->amount;
+            $total = $tchips*$nprize;
+            $result = number_format($total);
+           ?>
+
+            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>{{$prizemoney->place}}</strong></span><b style="font-size: 30px; color:red;">Php {{ $result }}</b></li>
+            @endforeach
+
             </ul> 
             </div><!--/col-3-->
             </div> 

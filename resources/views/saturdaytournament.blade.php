@@ -1,21 +1,10 @@
 @extends('layouts.guest')
 @section('content')
 
-
-        <?php 
-           // $totalchip = $prize->totalchips;
-           //$player = number_format($players->players);
-           // $ave = number_format($totalchip/$player);
-           // $totalchips = number_format($totalchip);
-        ?>
- 
-
     <div class="row">
-   <!--      <center><div class="col-sm-10"><h1>Emperor City Poker</h1></div></center> -->
         <div class="col-sm-3"><!--left col-->
-
         <ul class="list-group">
-            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - SATURDAY TOURNAMENT</b></li>
+            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - SATURDAY TOURNAMENT</b></li>
             <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b style="font-size: 25px; color:#0a0;"><input style="text-align: center; width:50px; border:0;" value="0" id="players">&nbsp&nbsp</b> 
                  <button type="button" class="btn btn-xs btn-danger" id="moins" onclick="minus()"><i class="glyphicon glyphicon-minus"></i></button>
                  <button type="button" class="btn btn-xs btn-primary" id="plus" onclick="plus()"><i class="glyphicon glyphicon-plus"></i></button>
@@ -31,8 +20,8 @@
           </ul> 
 
          
-             <ul class="list-group">
-            <li class="list-group-item" style="font-size: 25px; background: black; color: white; font-family:'digital-clock-font'"><b>CHIPS</b>  <!-- <button data-toggle="modal" data-target="" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --></li>
+          <ul class="list-group">
+            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>CHIPS</b>  <!-- <button data-toggle="modal" data-target="" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --></li>
             <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/10.png')}}" style="height: 70px; width: 70px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 45px; color:black;">10</b></li>
              <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/t5.png')}}" style="height: 70px; width: 70px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 45px; color:black;">25</b></li>
              
@@ -41,17 +30,11 @@
                    <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/1000.png')}}" style="height: 70px; width: 70px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 45px; color:black;">1000</b></li>
 
                    <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/10000.png')}}" style="height: 70px; width: 70px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 45px; color:black;">10,000</b></li>
- 
- 
           </ul> 
+        </div><!--/col-3 left-->
 
 
- 
-        </div><!--/col-3-->
-
-
-        <div class="col-sm-6">
-        
+        <div class="col-sm-6"><!-- center col 6 -->
           <form style="border: 4px solid #a1a1a1;margin-top: 0px;padding: 20px;">
               <center>
                 <h1 id="round" style="margin-bottom: -50px; font-size: 50px; color: white;">{{ $firstTournament->level }}</h1>
@@ -74,18 +57,14 @@
                 <span style="margin-left: 50px;"></span>
                 <button type="button" class="btn btn-sm btn-success" id="poker_next_round"><i class="glyphicon glyphicon-arrow-right"></i> Next</button>
                 <span style="margin-left: 50px;"></span>
-                <button type="button" class="btn btn-sm btn-warning reset"><i class="glyphicon glyphicon-refresh"></i> Reset</button>
-
-              </center> </form><br>
+                <button type="button" class="btn btn-sm btn-warning reset"><i class="glyphicon glyphicon-refresh"></i> Reset</button></center>
+          </form><br>
               
-
-
-
+              <!-- Level Group -->
               <ul id="pagination" class="list-group posts endless-pagination" data-next-page="{{ $posts->nextPageUrl() }}">
                 <li class="list-group-item text-muted" style="font-size: 20px; background: black; color: white; font-family:'digital-clock-font'">LEVELS<span class="pull-right">BLINDS</span></li>
                 
-    @foreach ($posts as $post)
-  
+                @foreach ($posts as $post)
                   <li class="list-group-item text-right">
                     <span class="pull-left">
                       <span class="pull-left">
@@ -94,60 +73,61 @@
                     </span><b  style="font-size: 25px;">{{ $post->blinds }}</b>
                   </li>
                 @endforeach
-          
+  
               <center>{!! $posts->render() !!}</center>
 
-                  </ul>  
+              </ul>  
 
 
-<script>
+        <script>
 
-$(document).ready(function() {
+        $(document).ready(function() {
 
+            $('body').on('click', '#pagination', function(e){
 
+                e.preventDefault();
+                var url = $(this).attr('href');
 
-    $('body').on('click', '#pagination', function(e){
+                $.get(url, function(data){
+                    $('.posts').html(data);
+                });
 
-        e.preventDefault();
-        var url = $(this).attr('href');
+            });
 
-        $.get(url, function(data){
-            $('.posts').html(data);
-        });
+        })
 
-    });
+        </script>
 
-})
-
-</script>
-
-</div><!--/col-6-->
+        </div><!--/end center col-6-->
 
 
-        <div class="col-sm-3">
+        <div class="col-sm-3"><!-- right col 3 -->
             <ul class="list-group">
-            <li class="list-group-item" style="background: black;"><b style="font-size: 25px; color: white; font-family:'digital-clock-font'">PRIZE MONEY</b> <!-- <button data-toggle="modal" data-target="#addformmodal" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --> 
+            <li class="list-group-item" style="background: black;"><b style="font-size: 30px; color: white; font-family:'digital-clock-font'">PRIZE MONEY</b> 
 
             @foreach($prizemoney as $prizemoney)
             <?php 
-            $tchips = $prize->totalchips;
+            $tchips = $prize->totalprize;
             $nprize = $prizemoney->amount;
             $total = $tchips*$nprize;
             $result = number_format($total);
-           ?>
+            ?>
+
             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>{{$prizemoney->place}}</strong></span><b style="font-size: 30px; color:red;">Php {{ $result }}</b></li>
             @endforeach
-            </ul> 
-            </div><!--/col-3-->
 
-            </div> 
-           </div><!--/tab-pane-->
-          </div><!--/tab-content-->
+            </ul> 
+            </div><!--/end right col-3-->
+
     </div><!--/row-->
                                                       
-    <audio id="soundHandle" style="display: none;"></audio>
+    <audio id="soundHandle" style="display: none;"></audio><!-- Alert sound for Timer -->
 
 
+
+
+
+<!-- Contdown Timer Logic Javascirpt -->
 @push('custom-scripts')
 
 <script type="text/javascript">
@@ -162,11 +142,8 @@ $(document).ready(function() {
 
     blinds = JSON.parse(blinds);
 
-    
-
     console.log(blinds);
 
-      
     var interval_id;
     
     return {
@@ -322,15 +299,11 @@ $(document).ready(function() {
     $('#play_pause_div').html('Play');
   }
 </script>
-
 @endpush
-
-
+<!-- End Contdown Timer Logic Javascirpt -->
 
 <script type="text/javascript">
-  
-  //Plus Minus Players
-
+  //Players
     var count = 0;
     var countEl = document.getElementById("players");
     function plus(){
@@ -347,16 +320,10 @@ $(document).ready(function() {
 //Rebuys
     var count1 = 0;
     var countEl1 = document.getElementById("rebuy");
-    var rebuycost = '{{ $rebuys->rebuyscost }}';
-    var rebuychipsval = '{{ $rebuys->rebuychipsvalue }}';
-    var totalchips = '{{ $prize->totalchips }}';  //need to get the integer value
 
      function plus1(){
         count1++;
         countEl1.value = count1;
-
-        var newtotalchips = (totalchips+rebuychipsval);
-
     }
     function minus1(){
       if (count1 >= 1) {
@@ -364,12 +331,7 @@ $(document).ready(function() {
         countEl1.value = count1;
       }  
     }
-
-
-
 </script>
-
-
 
 
 

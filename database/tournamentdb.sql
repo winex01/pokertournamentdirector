@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 29, 2019 at 07:55 AM
+-- Generation Time: May 29, 2019 at 03:24 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.7
 
@@ -50,20 +50,6 @@ INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `usertype`, `p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `banner`
---
-
-CREATE TABLE `banner` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `imagename` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `imagefile` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `durations`
 --
 
@@ -100,8 +86,8 @@ CREATE TABLE `eprizemoney` (
 
 INSERT INTO `eprizemoney` (`id`, `place`, `amount`) VALUES
 (101, '1st', '.45'),
-(102, '2nd', '33.75'),
-(103, '3rd', '21.24');
+(102, '2nd', '.3375'),
+(103, '3rd', '.2124');
 
 -- --------------------------------------------------------
 
@@ -179,57 +165,6 @@ CREATE TABLE `manpowerdocs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `masterfile`
---
-
-CREATE TABLE `masterfile` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `lastname` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `firstname` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `middlename` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `birthdate` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `placeofbirth` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `location` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `religion` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `civil_status` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `elem_school` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `elemgrad` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `highschool` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `hsgrad` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `college` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `collegegrad` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sss` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phil` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `pagibig` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tin` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `employee_number` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `card_number` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_name` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_address` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_tel` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_email` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `position` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `datehired` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `emp_status` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `imagename` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `imagefile` longblob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `masterfile`
---
-
-INSERT INTO `masterfile` (`id`, `lastname`, `firstname`, `middlename`, `gender`, `birthdate`, `placeofbirth`, `phone`, `email`, `location`, `religion`, `civil_status`, `elem_school`, `elemgrad`, `highschool`, `hsgrad`, `college`, `collegegrad`, `sss`, `phil`, `pagibig`, `tin`, `employee_number`, `card_number`, `company_name`, `company_address`, `company_tel`, `company_email`, `position`, `datehired`, `emp_status`, `created_at`, `updated_at`, `imagename`, `imagefile`) VALUES
-(1, 'Egot', 'Chris Jim', 'Singson', 'Male', 'December 3, 1993', 'Palompon, Leyte', '09196393274', 'jimegot@yahoo.com.ph', 'Palompon, Leyte', 'Roman Catholic', 'Single', 'PSCS', '2008', 'NLC', '2012', 'PIT', '2016', '000', '000', '000', '000', '101', '101', 'ASI', 'Cebu', '000', 'ASI', 'Admin', 'Jan 21, 2019', 'Active', '2019-04-08 16:00:00', '2019-04-08 16:00:00', 'defaultimage', '');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `migrations`
 --
 
@@ -278,37 +213,19 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `players`
---
-
-CREATE TABLE `players` (
-  `id` int(50) NOT NULL,
-  `players` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `players`
---
-
-INSERT INTO `players` (`id`, `players`) VALUES
-(101, 6);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `prize`
 --
 
 CREATE TABLE `prize` (
   `id` int(50) NOT NULL,
-  `totalchips` int(50) NOT NULL
+  `totalprize` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `prize`
 --
 
-INSERT INTO `prize` (`id`, `totalchips`) VALUES
+INSERT INTO `prize` (`id`, `totalprize`) VALUES
 (101, 100000);
 
 -- --------------------------------------------------------
@@ -342,25 +259,6 @@ INSERT INTO `prizemoney` (`id`, `place`, `amount`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rebuys`
---
-
-CREATE TABLE `rebuys` (
-  `id` int(50) NOT NULL,
-  `rebuyscost` decimal(50,0) NOT NULL,
-  `rebuychipsvalue` decimal(50,0) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `rebuys`
---
-
-INSERT INTO `rebuys` (`id`, `rebuyscost`, `rebuychipsvalue`) VALUES
-(101, '10', '1500');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tournament`
 --
 
@@ -381,7 +279,8 @@ INSERT INTO `tournament` (`id`, `level`, `blinds`, `status`) VALUES
 (103, 'Level 3', '100/200', 'active'),
 (104, 'Level 4', '200/400', 'active'),
 (105, 'Level 5', '300/600', 'active'),
-(106, 'Level 6', '400/800', 'active');
+(106, 'Level 6', '400/800', 'active'),
+(107, 'Level 7', '200/500', 'active');
 
 -- --------------------------------------------------------
 
@@ -420,12 +319,6 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `admins_email_unique` (`email`);
 
 --
--- Indexes for table `banner`
---
-ALTER TABLE `banner`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `durations`
 --
 ALTER TABLE `durations`
@@ -462,12 +355,6 @@ ALTER TABLE `manpowerdocs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `masterfile`
---
-ALTER TABLE `masterfile`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -480,12 +367,6 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `players`
---
-ALTER TABLE `players`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `prize`
 --
 ALTER TABLE `prize`
@@ -495,12 +376,6 @@ ALTER TABLE `prize`
 -- Indexes for table `prizemoney`
 --
 ALTER TABLE `prizemoney`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `rebuys`
---
-ALTER TABLE `rebuys`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -525,12 +400,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admins`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `banner`
---
-ALTER TABLE `banner`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `durations`
@@ -569,22 +438,10 @@ ALTER TABLE `manpowerdocs`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `masterfile`
---
-ALTER TABLE `masterfile`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `players`
---
-ALTER TABLE `players`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `prize`
@@ -597,12 +454,6 @@ ALTER TABLE `prize`
 --
 ALTER TABLE `prizemoney`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
-
---
--- AUTO_INCREMENT for table `rebuys`
---
-ALTER TABLE `rebuys`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `tournament`
