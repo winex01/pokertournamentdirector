@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-3"><!--left col-->
         <ul class="list-group">
-            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - SATURDAY TOURNAMENT</b></li>
+            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - SATURDAY TOURNAMENT</b><button style="padding-top: 10px; padding-bottom: 10px;" type="button" class="btn btn-md btn-success pull-right"><i class="glyphicon glyphicon-refresh"></i></button></li>
             <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b style="font-size: 25px; color:#0a0;"><input style="text-align: center; width:50px; border:0;" value="0" id="players">&nbsp&nbsp</b> 
                  <button type="button" class="btn btn-xs btn-danger" id="moins" onclick="minus()"><i class="glyphicon glyphicon-minus"></i></button>
                  <button type="button" class="btn btn-xs btn-primary" id="plus" onclick="plus()"><i class="glyphicon glyphicon-plus"></i></button>
@@ -21,7 +21,7 @@
 
          
           <ul class="list-group">
-            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>CHIPS</b>  <!-- <button data-toggle="modal" data-target="" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --></li>
+            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>CHIPS</b><span class="pull-right"><b>VALUE</b></span>  <!-- <button data-toggle="modal" data-target="" type="button" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-plus"></i></button> --></li>
             <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/10.png')}}" style="height: 70px; width: 70px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 45px; color:black;">10</b></li>
              <li class="list-group-item text-right"><span class="pull-left"><img src="{{asset('tournamentchips/t5.png')}}" style="height: 70px; width: 70px;" class="avatar img-circle img-thumbnail" alt="avatar"></span><b style="font-size: 45px; color:black;">25</b></li>
              
@@ -49,20 +49,20 @@
                   <span style="font-size: 35px; color:black;"></span><!-- blinds -->
                 </div><br>
 
-                <button type="button" class="btn btn-sm btn-primary" id="poker_play_pause">
+                <button type="button" class="btn btn-md btn-primary" id="poker_play_pause">
                   <i class="glyphicon glyphicon-pause"></i> /
                   <i class="glyphicon glyphicon-play"></i> 
                   <span id="play_pause_div">Play</span>
                 </button>
                 <span style="margin-left: 50px;"></span>
-                <button type="button" class="btn btn-sm btn-success" id="poker_next_round"><i class="glyphicon glyphicon-arrow-right"></i> Next</button>
+                <button type="button" class="btn btn-md btn-success" id="poker_next_round"><i class="glyphicon glyphicon-arrow-right"></i> Next</button>
                 <span style="margin-left: 50px;"></span>
-                <button type="button" class="btn btn-sm btn-warning reset"><i class="glyphicon glyphicon-refresh"></i> Reset</button></center>
+                <button type="button" class="btn btn-md btn-warning reset"><i class="glyphicon glyphicon-refresh"></i> Reset</button></center>
           </form><br>
               
               <!-- Level Group -->
               <ul id="pagination" class="list-group posts endless-pagination" data-next-page="{{ $posts->nextPageUrl() }}">
-                <li class="list-group-item text-muted" style="font-size: 20px; background: black; color: white; font-family:'digital-clock-font'">LEVELS<span class="pull-right">BLINDS</span></li>
+                <li class="list-group-item text-muted" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>LEVELS</b><span class="pull-right"><b>BLINDS</b></span></li>
                 
                 @foreach ($posts as $post)
                   <li class="list-group-item text-right">
@@ -103,7 +103,8 @@
 
         <div class="col-sm-3"><!-- right col 3 -->
             <ul class="list-group">
-            <li class="list-group-item" style="background: black;"><b style="font-size: 30px; color: white; font-family:'digital-clock-font'">PRIZE MONEY</b> 
+            <?php $tp = number_format($prize->totalprize); ?>
+            <li class="list-group-item" style="background: black;"><b style="font-size: 30px; color: white; font-family:'digital-clock-font'">PRIZE MONEY</b><b><input class="pull-right" style="text-align: right; height: 40px; width: 250px; font-size: 35px; background: black; border: none; color: red;" disabled="" value="Php {{$tp}}"></b>
 
             @foreach($prizemoney as $prizemoney)
             <?php 
@@ -113,7 +114,7 @@
             $result = number_format($total);
             ?>
 
-            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>{{$prizemoney->place}}</strong></span><b style="font-size: 30px; color:red;">Php {{ $result }}</b></li>
+            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>{{$prizemoney->place}}</strong></span><b style="font-size: 30px; color:black;">Php {{ $result }}</b></li>
             @endforeach
 
             </ul> 
@@ -123,7 +124,7 @@
                                                       
     <audio id="soundHandle" style="display: none;"></audio><!-- Alert sound for Timer -->
 
-
+    
 
 
 

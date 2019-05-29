@@ -13,14 +13,17 @@ use Illuminate\Support\Facades\URL;
 use Laravel\Scout\Searchable;
 use Session;
 
+
 //Daily Tournament Databases
 use App\EverydayDuration;
+use App\EBuyin;
 use App\EverydayTournament;
 use App\EverydayPrizeMoney;
 use App\EverydayPrize;
 
 //Saturday Tournament Databases
 use App\Duration;
+use App\Buyin;
 use App\Tournament;
 use App\Prizemoney;
 use App\Prize;

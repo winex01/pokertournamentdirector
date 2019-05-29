@@ -50,5 +50,4 @@ Route::any('/search', 'PagesController@search')->middleware('authenticated');
 Auth::routes();
 Route::get('/adminhome', 'AdminController@adminhome')->name('adminhome')->middleware('authenticated');
 
-
-
+ 

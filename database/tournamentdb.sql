@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 29, 2019 at 03:24 PM
+-- Generation Time: May 29, 2019 at 07:38 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.7
 
@@ -50,6 +50,28 @@ INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `usertype`, `p
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `buyin`
+--
+
+CREATE TABLE `buyin` (
+  `id` int(50) NOT NULL,
+  `totalplayers` int(50) NOT NULL,
+  `totalbuyer` int(50) NOT NULL,
+  `buyinamount` int(50) NOT NULL,
+  `totalchips` int(50) NOT NULL,
+  `averagechips` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `buyin`
+--
+
+INSERT INTO `buyin` (`id`, `totalplayers`, `totalbuyer`, `buyinamount`, `totalchips`, `averagechips`) VALUES
+(101, 0, 0, 20000, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `durations`
 --
 
@@ -67,6 +89,28 @@ CREATE TABLE `durations` (
 
 INSERT INTO `durations` (`id`, `in_seconds`, `in_minutes`, `created_at`, `updated_at`) VALUES
 (1, '1200', '20:00', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ebuyin`
+--
+
+CREATE TABLE `ebuyin` (
+  `id` int(50) NOT NULL,
+  `etotalplayers` int(50) NOT NULL,
+  `etotalbuyer` int(50) NOT NULL,
+  `ebuyinamount` int(50) NOT NULL,
+  `etotalchips` int(50) NOT NULL,
+  `eaveragechips` int(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ebuyin`
+--
+
+INSERT INTO `ebuyin` (`id`, `etotalplayers`, `etotalbuyer`, `ebuyinamount`, `etotalchips`, `eaveragechips`) VALUES
+(101, 0, 0, 10000, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -319,9 +363,21 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `admins_email_unique` (`email`);
 
 --
+-- Indexes for table `buyin`
+--
+ALTER TABLE `buyin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `durations`
 --
 ALTER TABLE `durations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ebuyin`
+--
+ALTER TABLE `ebuyin`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -402,10 +458,22 @@ ALTER TABLE `admins`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `buyin`
+--
+ALTER TABLE `buyin`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+
+--
 -- AUTO_INCREMENT for table `durations`
 --
 ALTER TABLE `durations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `ebuyin`
+--
+ALTER TABLE `ebuyin`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `eprizemoney`
