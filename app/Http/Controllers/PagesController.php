@@ -33,7 +33,7 @@ class PagesController extends Controller
 {
 
 
-  protected $posts_per_page = 6;
+  protected $posts_per_page = 1;
 
 
   public function logout(){
@@ -52,14 +52,23 @@ class PagesController extends Controller
     return view('tournament');
   } 
 
- 	public function dailytournament()
+ 	public function dailytournament(Request $request)
  	{
     $posts = EverydayTournament::paginate($this->posts_per_page);
+
+        if($request->ajax()) {
+            return [
+                'posts' => view('ajaxpage')->with(compact('posts'))->render(),
+                'next_page' => $posts->nextPageUrl()
+            ];
+        }
+
     $eduration = EverydayDuration::firstOrFail();
     $etournament = EverydayTournament::firstOrFail();
     $etournaments = EverydayTournament::all();
     $eprizemoney = EverydayPrizeMoney::all();
     $eprize = EverydayPrize::firstOrFail();
+    $ebuyin = EBuyin::firstOrFail();
 
     $temp = explode('/', $etournament->blinds);
     $blindParts = [
@@ -84,9 +93,82 @@ class PagesController extends Controller
       'etournament',
       'eprizemoney',
       'eprize',
-      'posts'
-
+      'posts',
+      'ebuyin'
     ));
+  }
+
+  public function addplayer(Request $request)
+  {
+    $id = 101;
+    $defbuyin = 150;
+    $buyin = (int)$defbuyin;
+
+    $ebuyin = EBuyin::firstOrFail();
+    $eplayers = $ebuyin->etotalplayers;
+    $tplayers = (int)$request->input('totalplayers');
+    $totalplayers = ($eplayers+$tplayers);
+
+    $totalchips = ($buyin*$totalplayers);
+    $averagechips = ($totalchips/$totalplayers);
+
+    DB::update('update ebuyin set etotalplayers = ?, ebuyinamount = ?, etotalchips = ?, eaveragechips = ? where id = ?' ,[$totalplayers,$buyin,$totalchips,$averagechips,$id]);
+
+      session()->flash('status', 'Record deleted Successfully.');
+      return redirect('/dailytournament');
+  }
+
+  public function minusplayer(Request $request)
+  {
+    $id = 101;
+    $ebuyin = EBuyin::firstOrFail();
+    $player = $ebuyin->etotalplayers;
+    $totalchips = $ebuyin->etotalchips;
+
+    $minusplayer = (int)$request->input('mplayers');
+    $newtotalplayer = ($player-$minusplayer);
+
+    $averagechips = ($totalchips/$newtotalplayer);
+
+    DB::update('update ebuyin set etotalplayers = ?, eaveragechips = ? where id = ?' ,[$newtotalplayer,$averagechips,$id]);
+
+      session()->flash('status', 'Record deleted Successfully.');
+      return redirect('/dailytournament');
+  }
+
+  public function rebuy(Request $request)
+  {
+    $id = 101;
+    $defbuyin = 150;
+    $buyin = (int)$defbuyin;
+
+    $ebuyin = EBuyin::firstOrFail();
+    $erebuy = $ebuyin->etotalbuyer;
+    $newrebuy = (int)$request->input('totalrebuys');
+    $totalrebuys = ($erebuy+$newrebuy);
+
+    $totalbuyin = ($buyin*$newrebuy);
+
+    $eprize = EverydayPrize::firstOrFail();
+    $tprize = $eprize->totalprize;
+ 
+    $totalpotmoney = ($tprize+$totalbuyin);
+
+    DB::update('update everydayprize set totalprize = ? where id = ?' ,[$totalpotmoney,$id]);
+    
+
+    $ebuyin = EBuyin::firstOrFail();
+    $players = $ebuyin->etotalplayers;
+    $tchips = $ebuyin->etotalchips;
+    $tplayers = ($players+$totalrebuys);
+
+    $totalchips = ($tchips+$totalbuyin);
+    $averagechips = ($totalchips/$players);
+
+    DB::update('update ebuyin set etotalbuyer = ?,  etotalchips = ?, eaveragechips = ? where id = ?' ,[$totalrebuys,$totalchips,$averagechips,$id]);
+
+      session()->flash('status', 'Record deleted Successfully.');
+      return redirect('/dailytournament');
   }
 
   public function saturdaytournament(Request $request)

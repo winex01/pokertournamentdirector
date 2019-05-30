@@ -1,23 +1,158 @@
 @extends('layouts.guest')
 @section('content')
 
+ 
+<!-- Add Players Modal -->
+<div class="modal fade" id="addplayer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Players</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+  <form id="addform" class="form" action={{URL::to('/addplayer')}} method="post" enctype="multipart/form-data">
+
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+  <div class="modal-body">
+    <div class="form-group">
+    <label for="totalplayers">Total Players</label>
+    <input type="text" class="form-control" id="totalplayers" name="totalplayers" aria-describedby="emailHelp" placeholder="Enter Total Players" required>
+  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+   </form>
+
+  </div>
+  </div>
+</div>
+<!-- End Add Player Modal -->
+
+
+ 
+<!-- Minus Players Modal -->
+<div class="modal fade" id="minusplayer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Minus Players</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+  <form id="addform" class="form" action={{URL::to('/minusplayer')}} method="post" enctype="multipart/form-data">
+
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+  <div class="modal-body">
+    <div class="form-group">
+    <label for="totalplayers">Total Players</label>
+    <input type="text" class="form-control" id="mplayers" name="mplayers" aria-describedby="emailHelp" placeholder="Enter Total Players" required>
+  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+   </form>
+
+  </div>
+  </div>
+</div>
+<!-- End Minus Player Modal -->
+
+
+
+<!-- Rebuy Modal -->
+<div class="modal fade" id="updaterebuy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Rebuys</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+  <form id="addform" class="form" action={{URL::to('/rebuy')}} method="post" enctype="multipart/form-data">
+
+  <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+  <div class="modal-body">
+  <div class="form-group">
+    <label for="totalrebuys">Total Rebuys</label>
+    <input type="text" class="form-control" id="totalrebuys" name="totalrebuys" placeholder="Enter Total Buyin" required>
+  </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+   </form>
+
+  </div>
+  </div>
+</div>
+
+<!-- End Rebuy Modal -->
+
+
+<script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- <script type="text/javascript">
+  $(document).ready(function(){
+
+    $('#addform').on('submit', function(e){
+      e.preventDefault();
+
+      $.ajax({
+        typ: "POST"
+        url: "updateplayer"
+        data: $('#addform').serializ(),
+        success: function(response){
+          console.log(response)
+          $('#updateplayer').modal('hide')
+          alert("Data Saved");
+        },
+        error: function(error){
+          console.log(error)
+          alert("Data Not Saved");
+        }
+      });
+    });
+  });
+</script> -->
+
+<!-- End Modal -->
+
+
     <div class="row">
    <!--      <center><div class="col-sm-10"><h1>Emperor City Poker</h1></div></center> -->
         <div class="col-sm-3"><!--left col-->
 
         <ul class="list-group">
-            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - TURBO TOURNAMENT</b><button style="padding-top: 10px; padding-bottom: 10px;" type="button" class="btn btn-md btn-success pull-right"><i class="glyphicon glyphicon-refresh"></i></button></li>
-            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b style="font-size: 25px; color:#0a0;"><input style="text-align: center; width:50px; border:0;" value="0" id="player">&nbsp&nbsp</b> 
-                 <button type="button" class="btn btn-xs btn-danger" id="moins" onclick="minus()"><i class="glyphicon glyphicon-minus"></i></button>
-                 <button type="button" class="btn btn-xs btn-primary" id="plus" onclick="plus()"><i class="glyphicon glyphicon-plus"></i></button>
+            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - TURBO TOURNAMENT</b></li>
+            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b><input value="{{ $ebuyin->etotalplayers }}" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b>
+              &nbsp&nbsp</b>&nbsp;&nbsp;&nbsp;
+                 <button  data-toggle="modal" data-target="#minusplayer" type="button"  class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-minus"></i></button>
+                 <button data-toggle="modal" data-target="#addplayer" type="button" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i></button>
+                </li>
 
-            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Rebuys</strong></span><b style="font-size: 25px; color:#0a0;"><input style="text-align: center; width:50px; border:0;" value="0" id="rebuy">&nbsp&nbsp</b> 
-                <button type="button" class="btn btn-xs btn-danger" id="moins1" onclick="minus1()"><i class="glyphicon glyphicon-minus"></i></button>
-                 <button type="button" class="btn btn-xs btn-primary" id="plus1" onclick="plus1()"><i class="glyphicon glyphicon-plus"></i></button></li>
+            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Rebuys</strong></span><b><input value="{{ $ebuyin->etotalbuyer }}" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button  data-toggle="modal" data-target="#updaterebuy" type="button"  class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i></button></li>
     
-              <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Ave. Chips</strong></span><b><input value="0"  id="average" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
+              <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Ave. Chips</strong></span><b><input value="{{ number_format($ebuyin->eaveragechips) }}" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
           
-             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Total Chips</strong></span><b><input type="text" value="0" id="tchips" name="tchips" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
+             <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Total Chips</strong></span><b><input type="text" value="{{ number_format($ebuyin->etotalchips) }}" id="tchips" name="tchips" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
            
           </ul> 
 
@@ -89,24 +224,47 @@
                   </ul>  
 
 
-        <script>
+    <script>
 
-        $(document).ready(function() {
+     $(document).ready(function() {
 
 
+    $('body').on('click', '.pagination a', function(e){
 
-            $('body').on('click', '#pagination', function(e){
+        e.preventDefault();
+        var url = $(this).attr('href');
 
-                e.preventDefault();
-                var url = $(this).attr('href');
+        $.get(url, function(data){
+            $('.posts').html(data);
+        });
 
-                $.get(url, function(data){
-                    $('.posts').html(data);
-                });
+    });
+/*
+    $(window).scroll(fetchPosts);
 
-            });
+    function fetchPosts() {
 
-        })
+        var page = $('.endless-pagination').data('next-page');
+
+        if(page !== null) {
+
+            clearTimeout( $.data( this, "scrollCheck" ) );
+
+            $.data( this, "scrollCheck", setTimeout(function() {
+                var scroll_position_for_posts_load = $(window).height() + $(window).scrollTop() + 100;
+
+                if(scroll_position_for_posts_load >= $(document).height()) {
+                    $.get(page, function(data){
+                        $('.posts').append(data.posts);
+                        $('.endless-pagination').data('next-page', data.next_page);
+                    });
+                }
+            }, 350))
+*/
+        }
+    }
+
+});
 
         </script>
 
@@ -410,5 +568,12 @@
 
 </style>
 
+
+
+
+
+
 @endsection
+
+
 
