@@ -33,7 +33,7 @@ class PagesController extends Controller
 {
 
 
-  protected $posts_per_page = 1;
+  protected $posts_per_page = 6;
 
 
   public function logout(){
@@ -71,6 +71,7 @@ class PagesController extends Controller
     $ebuyin = EBuyin::firstOrFail();
 
     $temp = explode('/', $etournament->blinds);
+ 
     $blindParts = [
       'big' => $temp[1],
       'small' => $temp[0]
@@ -81,9 +82,10 @@ class PagesController extends Controller
       $temp = explode('/', $etournaments->blinds);
       $allBlinds[] = [
         'small' => (int)$temp[0],
-        'big' => (int)$temp[1]
+        'big' => (int)$temp[1],
       ];  
     }
+ 
 
     return view('/dailytournament', compact(
       'etournaments',

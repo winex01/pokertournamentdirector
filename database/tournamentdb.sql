@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 29, 2019 at 07:38 PM
+-- Generation Time: May 30, 2019 at 09:58 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.7
 
@@ -110,7 +110,7 @@ CREATE TABLE `ebuyin` (
 --
 
 INSERT INTO `ebuyin` (`id`, `etotalplayers`, `etotalbuyer`, `ebuyinamount`, `etotalchips`, `eaveragechips`) VALUES
-(101, 0, 0, 10000, 0, 0);
+(101, 3, 6, 150, 750, 250);
 
 -- --------------------------------------------------------
 
@@ -168,7 +168,7 @@ CREATE TABLE `everydayprize` (
 --
 
 INSERT INTO `everydayprize` (`id`, `totalprize`) VALUES
-(101, '8888');
+(101, '9788');
 
 -- --------------------------------------------------------
 
@@ -188,8 +188,19 @@ CREATE TABLE `everydaytournament` (
 --
 
 INSERT INTO `everydaytournament` (`id`, `level`, `blinds`, `status`) VALUES
-(101, 'Level 1', '10/25', 'active'),
-(102, 'Level 2', '25/50', 'active');
+(101, 'Level 1', '50/100', 'active'),
+(102, 'Level 2', '100/200', 'active'),
+(103, 'Level 3', '200/400', 'active'),
+(104, 'BREAK TIME - 10 MINS BREAK/CHIP RAISE 25', '/', 'active'),
+(105, 'Level 4', '300/600', 'active'),
+(106, 'Level 5', '400/800', 'active'),
+(107, 'Level 6', '500/1000', 'active'),
+(108, 'Level 7', '600/1200', 'active'),
+(109, 'BREAK TIME - 5 MINS BREAK', '/', 'active'),
+(110, 'Level 8', '700/1400', 'active'),
+(111, 'Level 9', '800/1600', 'active'),
+(112, 'Level 10', '900/1800', 'active'),
+(113, 'Level 11', '1000/2000', 'active');
 
 -- --------------------------------------------------------
 
@@ -497,7 +508,7 @@ ALTER TABLE `everydayprize`
 -- AUTO_INCREMENT for table `everydaytournament`
 --
 ALTER TABLE `everydaytournament`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `manpowerdocs`

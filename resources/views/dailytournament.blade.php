@@ -20,7 +20,7 @@
   <div class="modal-body">
     <div class="form-group">
     <label for="totalplayers">Total Players</label>
-    <input type="text" class="form-control" id="totalplayers" name="totalplayers" aria-describedby="emailHelp" placeholder="Enter Total Players" required>
+    <input type="number" class="form-control" id="totalplayers" name="totalplayers" aria-describedby="emailHelp" placeholder="Enter Total Players" required>
   </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -54,7 +54,7 @@
   <div class="modal-body">
     <div class="form-group">
     <label for="totalplayers">Total Players</label>
-    <input type="text" class="form-control" id="mplayers" name="mplayers" aria-describedby="emailHelp" placeholder="Enter Total Players" required>
+    <input type="number" class="form-control" id="mplayers" name="mplayers" aria-describedby="emailHelp" placeholder="Enter Total Players" required>
   </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -75,7 +75,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update Rebuys</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Rebuys</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -88,7 +88,7 @@
   <div class="modal-body">
   <div class="form-group">
     <label for="totalrebuys">Total Rebuys</label>
-    <input type="text" class="form-control" id="totalrebuys" name="totalrebuys" placeholder="Enter Total Buyin" required>
+    <input type="number" class="form-control" id="totalrebuys" name="totalrebuys" placeholder="Enter Total Rebuys" required>
   </div>
 
       <div class="modal-footer">
@@ -142,13 +142,12 @@
 
         <ul class="list-group">
             <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - TURBO TOURNAMENT</b></li>
-            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b><input value="{{ $ebuyin->etotalplayers }}" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b>
-              &nbsp&nbsp</b>&nbsp;&nbsp;&nbsp;
+            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b><input value="{{ $ebuyin->etotalplayers }}" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b></b>&nbsp;&nbsp;&nbsp;
                  <button  data-toggle="modal" data-target="#minusplayer" type="button"  class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-minus"></i></button>
                  <button data-toggle="modal" data-target="#addplayer" type="button" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
 
-            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Rebuys</strong></span><b><input value="{{ $ebuyin->etotalbuyer }}" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button  data-toggle="modal" data-target="#updaterebuy" type="button"  class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i></button></li>
+            <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Rebuys</strong></span><b><input value="{{ $ebuyin->etotalbuyer }}" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b>&nbsp;&nbsp;&nbsp;<button  data-toggle="modal" data-target="#updaterebuy" type="button"  class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i></button></li>
     
               <li class="list-group-item text-right"><span class="pull-left" style="font-size: 25px;"><strong>Ave. Chips</strong></span><b><input value="{{ number_format($ebuyin->eaveragechips) }}" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b> </li>
           
@@ -176,7 +175,7 @@
         </div><!--/col-3-->
 
 
-        <div class="col-sm-6">
+        <div class="col-sm-5">
         
           <form style="border: 4px solid #a1a1a1;margin-top: 0px;padding: 20px;">
               <center>
@@ -205,6 +204,7 @@
               </center> </form><br>
               
                 <!-- Level Group -->
+
               <ul id="pagination" class="list-group posts endless-pagination" data-next-page="{{ $posts->nextPageUrl() }}">
                 <li class="list-group-item text-muted" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>LEVELS</b><span class="pull-right"><b>BLINDS</b></span></li>
                  
@@ -221,15 +221,15 @@
           
               <center>{!! $posts->render() !!}</center>
 
-                  </ul>  
+                  </ul>
 
-
+ 
     <script>
 
      $(document).ready(function() {
 
 
-    $('body').on('click', '.pagination a', function(e){
+    $('document').on('click', '#pagination a', function(e){
 
         e.preventDefault();
         var url = $(this).attr('href');
@@ -272,7 +272,7 @@
         </div><!--/col-6-->
 
 
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <ul class="list-group">
               <?php $tp = number_format($eprize->totalprize); ?>
             <li class="list-group-item" style="background: black;"><b style="font-size: 30px; color: white; font-family:'digital-clock-font'">PRIZE MONEY</b><b><input class="pull-right" style="text-align: right; height: 40px; width: 250px; font-size: 35px; background: black; border: none; color: red;" disabled="" value="Php {{$tp}}"></b>
@@ -419,6 +419,18 @@
         }
       },
       updateRound: function (round) {
+        if(round==4)
+        {
+        $('#round').html('BREAK TIME - 10 MINS.');
+        }elseif(round==5)
+        {
+        var round = 4;
+        $('#round').html('Level' + ' ' + round);
+        }elseif(round==9)
+        {
+        $('#round').html('BREAK TIME - 5 MINS.');
+        }
+
         $('#round').html('Level' + ' ' + round);
       }
     };
