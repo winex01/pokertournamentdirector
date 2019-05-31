@@ -47,6 +47,11 @@ class PagesController extends Controller
  		return view('welcome');
  	}	
 
+    public function viewplayers()
+  {
+    return view('viewplayers');
+  } 
+
   public function tournament()
   {
     return view('tournament');
@@ -100,6 +105,7 @@ class PagesController extends Controller
     ));
   }
 
+
   public function addplayer(Request $request)
   {
     $id = 101;
@@ -116,8 +122,7 @@ class PagesController extends Controller
 
     DB::update('update ebuyin set etotalplayers = ?, ebuyinamount = ?, etotalchips = ?, eaveragechips = ? where id = ?' ,[$totalplayers,$buyin,$totalchips,$averagechips,$id]);
 
-      session()->flash('status', 'Record deleted Successfully.');
-      return redirect('/dailytournament');
+    return redirect()->back();
   }
 
   public function minusplayer(Request $request)
@@ -134,8 +139,7 @@ class PagesController extends Controller
 
     DB::update('update ebuyin set etotalplayers = ?, eaveragechips = ? where id = ?' ,[$newtotalplayer,$averagechips,$id]);
 
-      session()->flash('status', 'Record deleted Successfully.');
-      return redirect('/dailytournament');
+     return redirect()->back();
   }
 
   public function rebuy(Request $request)
@@ -169,8 +173,7 @@ class PagesController extends Controller
 
     DB::update('update ebuyin set etotalbuyer = ?,  etotalchips = ?, eaveragechips = ? where id = ?' ,[$totalrebuys,$totalchips,$averagechips,$id]);
 
-      session()->flash('status', 'Record deleted Successfully.');
-      return redirect('/dailytournament');
+    return redirect()->back();
   }
 
   public function saturdaytournament(Request $request)

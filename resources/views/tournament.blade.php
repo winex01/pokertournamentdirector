@@ -30,6 +30,18 @@
               </div>
             </div><!-- ./col -->
 
+
+                   <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <p style="font-size:25px;">Players</p>
+                </div>
+                <a href="{{ url('/viewplayers') }}" class="small-box-footer">Click here to view <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+
+
+
           <div class="col-lg-3 col-xs-3">
              
           </div><!-- /.row -->

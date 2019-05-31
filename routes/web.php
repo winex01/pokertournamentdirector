@@ -43,6 +43,8 @@ Auth::routes();
 Route::post('/minusplayer', 'PagesController@minusplayer')->name('minusplayer')->middleware('authenticated');
 Auth::routes();
 Route::post('/rebuy', 'PagesController@rebuy')->name('rebuy')->middleware('authenticated');
+Auth::routes();
+Route::any('/viewplayers', 'PagesController@viewplayers');
 
 
 //Saturday Tournament Routes

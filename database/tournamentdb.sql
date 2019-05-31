@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 30, 2019 at 09:58 PM
+-- Generation Time: May 31, 2019 at 08:10 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.7
 
@@ -110,7 +110,7 @@ CREATE TABLE `ebuyin` (
 --
 
 INSERT INTO `ebuyin` (`id`, `etotalplayers`, `etotalbuyer`, `ebuyinamount`, `etotalchips`, `eaveragechips`) VALUES
-(101, 3, 6, 150, 750, 250);
+(101, 5, 6, 150, 750, 150);
 
 -- --------------------------------------------------------
 
@@ -150,7 +150,8 @@ CREATE TABLE `everydayduration` (
 --
 
 INSERT INTO `everydayduration` (`id`, `in_seconds`, `in_minutes`) VALUES
-(101, '600', '10:00');
+(101, '600', '10:00'),
+(102, '1200', '20:00');
 
 -- --------------------------------------------------------
 
@@ -194,13 +195,14 @@ INSERT INTO `everydaytournament` (`id`, `level`, `blinds`, `status`) VALUES
 (104, 'BREAK TIME - 10 MINS BREAK/CHIP RAISE 25', '/', 'active'),
 (105, 'Level 4', '300/600', 'active'),
 (106, 'Level 5', '400/800', 'active'),
-(107, 'Level 6', '500/1000', 'active'),
-(108, 'Level 7', '600/1200', 'active'),
+(107, 'Level 6', '500/1,000', 'active'),
+(108, 'Level 7', '600/1,200', 'active'),
 (109, 'BREAK TIME - 5 MINS BREAK', '/', 'active'),
-(110, 'Level 8', '700/1400', 'active'),
-(111, 'Level 9', '800/1600', 'active'),
-(112, 'Level 10', '900/1800', 'active'),
-(113, 'Level 11', '1000/2000', 'active');
+(110, 'Level 8', '700-ANTE-100/1,400', 'active'),
+(111, 'Level 9', '800/1,600', 'active'),
+(112, 'Level 10', '900/1,800', 'active'),
+(113, 'Level 11', '1,000/2,000', 'active'),
+(114, 'END OF TOURNAMENT', '/', 'active');
 
 -- --------------------------------------------------------
 
@@ -496,7 +498,7 @@ ALTER TABLE `eprizemoney`
 -- AUTO_INCREMENT for table `everydayduration`
 --
 ALTER TABLE `everydayduration`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `everydayprize`
@@ -508,7 +510,7 @@ ALTER TABLE `everydayprize`
 -- AUTO_INCREMENT for table `everydaytournament`
 --
 ALTER TABLE `everydaytournament`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `manpowerdocs`
