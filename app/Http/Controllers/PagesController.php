@@ -47,11 +47,6 @@ class PagesController extends Controller
  		return view('welcome');
  	}	
 
-    public function viewplayers()
-  {
-    return view('viewplayers');
-  } 
-
   public function tournament()
   {
     return view('tournament');
@@ -92,6 +87,8 @@ class PagesController extends Controller
     }
  
 
+  $timertournament = DB::select("Select * from everydaytournament");
+
     return view('/dailytournament', compact(
       'etournaments',
       'blindParts',
@@ -101,7 +98,8 @@ class PagesController extends Controller
       'eprizemoney',
       'eprize',
       'posts',
-      'ebuyin'
+      'ebuyin',
+      'timertournament'
     ));
   }
 
@@ -122,7 +120,9 @@ class PagesController extends Controller
 
     DB::update('update ebuyin set etotalplayers = ?, ebuyinamount = ?, etotalchips = ?, eaveragechips = ? where id = ?' ,[$totalplayers,$buyin,$totalchips,$averagechips,$id]);
 
-    return redirect()->back();
+    $var['new_data_fetch'] = \App\EBuyin::findOrFail($id);
+    echo json_encode($var);
+    exit;
   }
 
   public function minusplayer(Request $request)
