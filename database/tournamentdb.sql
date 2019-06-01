@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 31, 2019 at 08:10 AM
+-- Generation Time: Jun 01, 2019 at 09:38 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.7
 
@@ -110,7 +110,7 @@ CREATE TABLE `ebuyin` (
 --
 
 INSERT INTO `ebuyin` (`id`, `etotalplayers`, `etotalbuyer`, `ebuyinamount`, `etotalchips`, `eaveragechips`) VALUES
-(101, 5, 6, 150, 750, 150);
+(101, 26, 5, 150, 3900, 150);
 
 -- --------------------------------------------------------
 
@@ -150,7 +150,7 @@ CREATE TABLE `everydayduration` (
 --
 
 INSERT INTO `everydayduration` (`id`, `in_seconds`, `in_minutes`) VALUES
-(101, '600', '10:00'),
+(101, '120', '2:00'),
 (102, '1200', '20:00');
 
 -- --------------------------------------------------------
@@ -169,7 +169,7 @@ CREATE TABLE `everydayprize` (
 --
 
 INSERT INTO `everydayprize` (`id`, `totalprize`) VALUES
-(101, '9788');
+(101, '10538');
 
 -- --------------------------------------------------------
 
@@ -181,28 +181,28 @@ CREATE TABLE `everydaytournament` (
   `id` int(50) NOT NULL,
   `level` varchar(50) NOT NULL,
   `blinds` varchar(50) NOT NULL,
-  `status` varchar(50) NOT NULL
+  `in_seconds` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `everydaytournament`
 --
 
-INSERT INTO `everydaytournament` (`id`, `level`, `blinds`, `status`) VALUES
-(101, 'Level 1', '50/100', 'active'),
-(102, 'Level 2', '100/200', 'active'),
-(103, 'Level 3', '200/400', 'active'),
-(104, 'BREAK TIME - 10 MINS BREAK/CHIP RAISE 25', '/', 'active'),
-(105, 'Level 4', '300/600', 'active'),
-(106, 'Level 5', '400/800', 'active'),
-(107, 'Level 6', '500/1,000', 'active'),
-(108, 'Level 7', '600/1,200', 'active'),
-(109, 'BREAK TIME - 5 MINS BREAK', '/', 'active'),
-(110, 'Level 8', '700-ANTE-100/1,400', 'active'),
-(111, 'Level 9', '800/1,600', 'active'),
-(112, 'Level 10', '900/1,800', 'active'),
-(113, 'Level 11', '1,000/2,000', 'active'),
-(114, 'END OF TOURNAMENT', '/', 'active');
+INSERT INTO `everydaytournament` (`id`, `level`, `blinds`, `in_seconds`) VALUES
+(101, 'Level 1', '50/100', '60'),
+(102, 'Level 2', '100/200', '120'),
+(103, 'Level 3', '200/400', '180'),
+(104, 'BREAK TIME - 10 MINS ', 'CHIP RAISE 25', '600'),
+(105, 'Level 4', '300/600', '600'),
+(106, 'Level 5', '400/800', '600'),
+(107, 'Level 6', '500/1,000', '600'),
+(108, 'Level 7', '600/1,200', '600'),
+(109, 'BREAK TIME - 5 MINS BREAK', '-', '300'),
+(110, 'Level 8', '700-ANTE-100/1,400', '600'),
+(111, 'Level 9', '800/1,600', '600'),
+(112, 'Level 10', '900/1,800', '600'),
+(113, 'Level 11', '1,000/2,000', '600'),
+(114, 'END OF TOURNAMENT', '-', '-');
 
 -- --------------------------------------------------------
 

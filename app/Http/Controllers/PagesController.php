@@ -70,7 +70,7 @@ class PagesController extends Controller
     $eprize = EverydayPrize::firstOrFail();
     $ebuyin = EBuyin::firstOrFail();
 
-    $temp = explode('/', $etournament->blinds);
+/*    $temp = explode('/', $etournament->blinds);
  
     $blindParts = [
       'big' => $temp[1],
@@ -85,7 +85,7 @@ class PagesController extends Controller
         'big' => (int)$temp[1],
       ];  
     }
- 
+ */
 
   $timertournament = DB::select("Select * from everydaytournament");
 

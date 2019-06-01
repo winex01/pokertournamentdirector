@@ -330,15 +330,9 @@
           <form style="border: 4px solid #a1a1a1;margin-top: 0px;padding: 20px;">
               <center>
                 <h1 id="round" style="margin-bottom: -50px; font-size: 60px; color: white;">{{ $timertournament[0]->level }}</h1>
-                <div class="clock" style="font-size: 200px; color:#0a0; font-family:'digital-clock-font'">{{ gmdate("i:s", $timertournament[0]->in_seconds ) }}</div>
+                <div id="clocker" class="clock" style="font-size: 200px; color:#0a0; font-family:'digital-clock-font'">{{ gmdate("i:s", $timertournament[0]->in_seconds ) }}</div>
                 
-                <div id="poker_blinds" style="margin-top: -65px; margin-bottom: 20px; font-size: 35px; ">
-                  <div class="blinds" style="font-size: 50px; color:white; ">
-                    <span class="small-blind">{{ $blindParts['small'] }}</span>
-                    <span class="separator">/</span>
-                    <span class="big-blind">{{ $blindParts['big'] }}</span>
-                  </div>
-                  <span style="font-size: 35px; color:black;"></span><!-- blinds -->
+                <div id="poker_blinds" style="margin-top: -65px; margin-bottom: 20px; font-size: 60px; color:white;">{{ $timertournament[0]->blinds }}
                 </div><br>
 
                 <button type="button" class="btn btn-md btn-primary" id="poker_play_pause">
@@ -432,15 +426,7 @@
     var duration = '{{ $timertournament[0]->in_seconds }}';
     var timer = duration;
         
-    {{-- {{ dd(json_encode($allBlinds)) }} --}}
 
-    var blinds = '{!! json_encode($allBlinds) !!}';
-
-    blinds = JSON.parse(blinds);
-
-    
-
-    console.log(blinds);
 
       
     var interval_id;
@@ -476,6 +462,7 @@
       resetTimer: function () {
   
         timer = duration;
+
       },
       startClock: function () {
         var that = this;
@@ -496,64 +483,66 @@
      // increase round
         round += 1;
 
-
         switch (round){
 
           case 0:
-            var timer =  '{{ $timertournament[0]->in_seconds }}';
+            timer =  '{{ $timertournament[0]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 1:
-            var timer =  '{{ $timertournament[1]->in_seconds }}';
+            timer =  '{{ $timertournament[1]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 2:
-            var timer =  '{{ $timertournament[2]->in_seconds }}';
+            timer =  '{{ $timertournament[2]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 3:
-            var timer =  '{{ $timertournament[3]->in_seconds }}';
+            timer =  '{{ $timertournament[3]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 4:
-            var timer =  '{{ $timertournament[4]->in_seconds }}';
+            timer =  '{{ $timertournament[4]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 5:
-            var timer =  '{{ $timertournament[5]->in_seconds }}';
+            timer =  '{{ $timertournament[5]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 6:
-            var timer =  '{{ $timertournament[6]->in_seconds }}';
+            timer =  '{{ $timertournament[6]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 7:
-            var timer =  '{{ $timertournament[7]->in_seconds }}';
+            timer =  '{{ $timertournament[7]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 8:
-            var timer =  '{{ $timertournament[8]->in_seconds }}';
+            timer =  '{{ $timertournament[8]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 9:
-            var timer =  '{{ $timertournament[9]->in_seconds }}';
+            timer =  '{{ $timertournament[9]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 10:
-            var timer =  '{{ $timertournament[10]->in_seconds }}';
+            timer =  '{{ $timertournament[10]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 11:
-            var timer =  '{{ $timertournament[11]->in_seconds }}';
+            timer =  '{{ $timertournament[11]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 12:
-            var timer =  '{{ $timertournament[12]->in_seconds }}';
+            timer =  '{{ $timertournament[12]->in_seconds }}';
             this.updateClock(timer);
             break;
           case 13:
-            var timer =  '{{ $timertournament[13]->in_seconds }}';
+            timer =  '{{ $timertournament[13]->in_seconds }}';
             this.updateClock(timer);
+            break;
+          default:
+            $('#clocker').html('');
             break;
         }
 
@@ -571,12 +560,60 @@
         interval_id = undefined;
       },
       updateBlinds: function (round) {
-        var round_blinds = blinds[round] || blinds[blinds.length];
-        
-        $('.small-blind').html(round_blinds.small);
-        $('.big-blind').html(round_blinds.big);
+
+          switch (round){
+
+          case 0:
+            $('#poker_blinds').html('{{ $timertournament[0]->blinds }}');
+            break;
+          case 1:
+            $('#poker_blinds').html('{{ $timertournament[1]->blinds }}');
+            break;
+          case 2:
+            $('#poker_blinds').html('{{ $timertournament[2]->blinds }}');
+            break;
+          case 3:
+            $('#poker_blinds').html('<b style="color:red;">'+'{{ $timertournament[3]->blinds }}'+'</b>');
+            break;
+          case 4:
+            $('#poker_blinds').html('{{ $timertournament[4]->blinds }}');
+            break;
+          case 5:
+            $('#poker_blinds').html('{{ $timertournament[5]->blinds }}');
+            break;
+          case 6:
+            $('#poker_blinds').html('{{ $timertournament[6]->blinds }}');
+            break;
+          case 7:
+            $('#poker_blinds').html('{{ $timertournament[7]->blinds }}');
+            break;
+          case 8:
+            $('#poker_blinds').html('<b style="color:red;">'+'{{ $timertournament[8]->blinds }}'+'</b>');
+            break;
+          case 9:
+            $('#poker_blinds').html('{{ $timertournament[9]->blinds }}');
+            break;
+          case 10:
+            $('#poker_blinds').html('{{ $timertournament[10]->blinds }}');
+            break;
+          case 11:
+            $('#poker_blinds').html('{{ $timertournament[11]->blinds }}');
+            break;
+          case 12:
+            $('#poker_blinds').html('{{ $timertournament[12]->blinds }}');
+            break;
+          case 13:
+            $('#poker_blinds').html('<b style="color:red;">'+'{{ $timertournament[13]->blinds }}'+'</b>');
+            break;
+          default:
+            $('#poker_blinds').html('');
+            break;
+
+        }
+
       },
       updateClock: function (timer) {
+
         var minute = Math.floor(timer / 60),
             second = (timer % 60) + "",
             second = second.length > 1 ? second : "0" + second;
@@ -607,9 +644,7 @@
         }
       },
       updateRound: function (round) {
-        //$('#round').html('Level' + ' ' + round);
-
-
+   
         switch (round){
 
           case 0:
@@ -622,7 +657,7 @@
             $('#round').html('{{ $timertournament[2]->level }}');
             break;
           case 3:
-            $('#round').html('{{ $timertournament[3]->level }}');
+            $('#round').html('<b style="color:red;">'+'{{ $timertournament[3]->level }}'+'</b>');
             break;
           case 4:
             $('#round').html('{{ $timertournament[4]->level }}');
@@ -637,7 +672,7 @@
             $('#round').html('{{ $timertournament[7]->level }}');
             break;
           case 8:
-            $('#round').html('{{ $timertournament[8]->level }}');
+            $('#round').html('<b style="color:red;">'+'{{ $timertournament[8]->level }}'+'</b>');
             break;
           case 9:
             $('#round').html('{{ $timertournament[9]->level }}');
@@ -652,7 +687,7 @@
             $('#round').html('{{ $timertournament[12]->level }}');
             break;
           case 13:
-            $('#round').html('{{ $timertournament[13]->level }}');
+            $('#round').html('<b style="color:red;">'+'{{ $timertournament[13]->level }}'+'</b>');
             break;
           default:
             $('#round').html('END OF TOURNAMENT');
