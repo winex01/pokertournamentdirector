@@ -46,7 +46,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
          <!-- Logo -->
         <a href="{{ url('/') }}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
+<<<<<<< HEAD
           <span class="logo-mini"><b>P</b>TD</span>
+=======
+          <span class="logo-mini"><b><li class="glyphicon glyphicon-home" style='color:black;'"></li></b></span>
+>>>>>>> 7dd1ce0fd426d03d0f63af52a5e32a61cbeedc21
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>Tournament</b>Director</span>
         </a>

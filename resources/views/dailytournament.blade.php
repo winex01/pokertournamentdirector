@@ -171,7 +171,11 @@
                 })
                   $('#addplayermodal').modal('hide')
                   alert("New Players has been successfully added.");
+<<<<<<< HEAD
                   
+=======
+                    $("#py").val(data.etotalplayers);
+>>>>>>> 7dd1ce0fd426d03d0f63af52a5e32a61cbeedc21
             })
         })
     </script>
@@ -294,7 +298,11 @@
         <ul class="list-group">
            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - TURBO TOURNAMENT</b><span class="pull-right"> <a href="#"><button title="Refresh Result" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-refresh"></i></button></a></span></li>
 
+<<<<<<< HEAD
             <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b><input id="dplayer" value="{{ $eplayers }}" id="py" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b></b>&nbsp;&nbsp;&nbsp;
+=======
+            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b><input  value="{{ $eplayers }}" id="py" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b></b>&nbsp;&nbsp;&nbsp;
+>>>>>>> 7dd1ce0fd426d03d0f63af52a5e32a61cbeedc21
                  <button  data-toggle="modal" data-target="#minusplayermodal" type="button"  class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-minus"></i></button>
                  <button data-toggle="modal" data-target="#addplayermodal" type="button" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
