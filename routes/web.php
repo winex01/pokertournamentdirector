@@ -37,6 +37,15 @@ Route::get('/tournament', 'PagesController@tournament')->name('tournament')->mid
 //Daily Tournament Routes
 Auth::routes();
 Route::get('/dailytournament', 'PagesController@dailytournament')->name('dailytournament')->middleware('authenticated');
+Auth::routes();
+Route::post('/addplayer', 'PagesController@addplayer')->name('addplayer')->middleware('authenticated');
+Auth::routes();
+Route::post('/minusplayer', 'PagesController@minusplayer')->name('minusplayer')->middleware('authenticated');
+Auth::routes();
+Route::post('/rebuy', 'PagesController@rebuy')->name('rebuy')->middleware('authenticated');
+Auth::routes();
+Route::any('/viewplayers', 'PagesController@viewplayers');
+
 
 //Saturday Tournament Routes
 Auth::routes();
