@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 01, 2019 at 09:38 PM
+-- Generation Time: Jun 03, 2019 at 07:27 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.7
 
@@ -110,7 +110,7 @@ CREATE TABLE `ebuyin` (
 --
 
 INSERT INTO `ebuyin` (`id`, `etotalplayers`, `etotalbuyer`, `ebuyinamount`, `etotalchips`, `eaveragechips`) VALUES
-(101, 26, 5, 150, 3900, 150);
+(101, 34, 5, 150, 5100, 150);
 
 -- --------------------------------------------------------
 
@@ -181,7 +181,7 @@ CREATE TABLE `everydaytournament` (
   `id` int(50) NOT NULL,
   `level` varchar(50) NOT NULL,
   `blinds` varchar(50) NOT NULL,
-  `in_seconds` varchar(50) NOT NULL
+  `in_seconds` varchar(50) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -200,9 +200,9 @@ INSERT INTO `everydaytournament` (`id`, `level`, `blinds`, `in_seconds`) VALUES
 (109, 'BREAK TIME - 5 MINS BREAK', '-', '300'),
 (110, 'Level 8', '700-ANTE-100/1,400', '600'),
 (111, 'Level 9', '800/1,600', '600'),
-(112, 'Level 10', '900/1,800', '600'),
-(113, 'Level 11', '1,000/2,000', '600'),
-(114, 'END OF TOURNAMENT', '-', '-');
+(112, 'Level 10', '900/1,800', '60'),
+(113, 'Level 11', '1,000/2,000', '60'),
+(114, 'END OF TOURNAMENT', '-', '0');
 
 -- --------------------------------------------------------
 

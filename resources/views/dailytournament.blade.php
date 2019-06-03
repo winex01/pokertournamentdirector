@@ -171,11 +171,6 @@
                 })
                   $('#addplayermodal').modal('hide')
                   alert("New Players has been successfully added.");
-<<<<<<< HEAD
-                  
-=======
-                    $("#py").val(data.etotalplayers);
->>>>>>> 7dd1ce0fd426d03d0f63af52a5e32a61cbeedc21
             })
         })
     </script>
@@ -297,12 +292,9 @@
           ?>
         <ul class="list-group">
            <li class="list-group-item" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>ECP - TURBO TOURNAMENT</b><span class="pull-right"> <a href="#"><button title="Refresh Result" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-refresh"></i></button></a></span></li>
-
-<<<<<<< HEAD
-            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b><input id="dplayer" value="{{ $eplayers }}" id="py" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b></b>&nbsp;&nbsp;&nbsp;
-=======
-            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b><input  value="{{ $eplayers }}" id="py" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b></b>&nbsp;&nbsp;&nbsp;
->>>>>>> 7dd1ce0fd426d03d0f63af52a5e32a61cbeedc21
+ 
+            <li class="list-group-item text-right" ><span class="pull-left" style="font-size: 25px;"><strong>Players</strong></span><b><input id="tplayer" value="{{ $eplayers }}" id="py" style="text-align: right; border:0px; width:150px; font-size: 25px;"></b></b>&nbsp;&nbsp;&nbsp;
+ 
                  <button  data-toggle="modal" data-target="#minusplayermodal" type="button"  class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-minus"></i></button>
                  <button data-toggle="modal" data-target="#addplayermodal" type="button" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-plus"></i></button>
                 </li>
@@ -357,17 +349,43 @@
               
                 <!-- Level Group -->
 
-              <ul id="pagination" class="list-group posts endless-pagination">
-                <li class="list-group-item text-muted" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>LEVELS</b><span class="pull-right"><b>BLINDS</b></span></li>
+                    <ul id="pagination" class="list-group posts endless-pagination">
+                <li class="list-group-item text-muted" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>LEVELS - BLINDS</b><span class="pull-right"><b>TIME - MIN:SEC</b></span></li>
+            
+                  <li class="list-group-item text-center" style="font-size: 30px; color:#0a0; font-family:'digital-clock-font"><b>CURRENT LEVEL</b></li>
+                  <li class="list-group-item text-right">
+                    <span class="pull-left">
+                      <span class="pull-left">
+                        <strong id="currentlevel1" style="font-size: 30px;">{{ $timertournament[0]->level }} - {{ $timertournament[0]->blinds }}</strong>
+                      </span>
+                    </span><strong id="currentlevel2" style="font-size: 30px;">{{ gmdate("i:s", $timertournament[0]->in_seconds ) }}</strong>
+                  </li>
+
+                   <li class="list-group-item text-center" style="font-size: 30px; color:#0a0; font-family:'digital-clock-font"><b>NEXT LEVEL</b></li>
+                  <li class="list-group-item text-right">
+                    <span class="pull-left">
+                      <span class="pull-left">
+                        <strong id="nextlevel1" style="font-size: 30px;">{{ $timertournament[1]->level }} - {{ $timertournament[1]->blinds }}</strong>
+                      </span>
+                    </span><strong id="nextlevel2" style="font-size: 30px;">{{ gmdate("i:s", $timertournament[1]->in_seconds ) }}</strong>
+                  </li>
+        
+                  </ul>
+
+
+
+
+          <!--     <ul id="pagination" class="list-group posts endless-pagination">
+                <li class="list-group-item text-muted" style="font-size: 30px; background: black; color: white; font-family:'digital-clock-font'"><b>LEVELS - BLINDS</b><span class="pull-right"><b>TIME (Min:Sec)</b></span></li>
                  
                @foreach ($posts as $post)
   
                   <li class="list-group-item text-right">
                     <span class="pull-left">
                       <span class="pull-left">
-                        <strong style="font-size: 25px;">{{ $post->level }}</strong>
+                        <strong style="font-size: 25px;">{{ $post->level }} - {{ $post->blinds }}</strong>
                       </span>
-                    </span><b  style="font-size: 25px;">{{ $post->blinds }}</b>
+                    </span><b  style="font-size: 25px;">{{ gmdate("i:s", $post->in_seconds) }}</b>
                   </li>
                 @endforeach
           
@@ -393,7 +411,7 @@
 
       });
 
-        </script>
+        </script> -->
 
        
         </div><!--/col-6-->
@@ -550,7 +568,8 @@
             this.updateClock(timer);
             break;
           default:
-            $('#clocker').html('');
+            timer = 0; 
+            this.updateClock(timer);
             break;
         }
 
@@ -611,12 +630,9 @@
             $('#poker_blinds').html('{{ $timertournament[12]->blinds }}');
             break;
           case 13:
-            $('#poker_blinds').html('<b style="color:red;">'+'{{ $timertournament[13]->blinds }}'+'</b>');
-            break;
-          default:
             $('#poker_blinds').html('');
             break;
-
+    
         }
 
       },
@@ -657,48 +673,101 @@
 
           case 0:
             $('#round').html('{{ $timertournament[0]->level }}');
+            $('#currentlevel1').html('{{ $timertournament[0]->level }}'+' - '+'{{ $timertournament[0]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[0]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[1]->level }}'+' - '+'{{ $timertournament[1]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[1]->in_seconds ) }}');
             break;
           case 1:
             $('#round').html('{{ $timertournament[1]->level }}');
+            $('#currentlevel1').html('{{ $timertournament[1]->level }}'+' - '+'{{ $timertournament[1]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[1]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[2]->level }}'+' - '+'{{ $timertournament[2]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[2]->in_seconds ) }}');
             break;
           case 2:
             $('#round').html('{{ $timertournament[2]->level }}');
+            $('#currentlevel1').html('{{ $timertournament[2]->level }}'+' - '+'{{ $timertournament[2]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[2]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[3]->level }}'+' - '+'{{ $timertournament[3]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[3]->in_seconds ) }}');
             break;
           case 3:
             $('#round').html('<b style="color:red;">'+'{{ $timertournament[3]->level }}'+'</b>');
+             $('#currentlevel1').html('{{ $timertournament[3]->level }}'+' - '+'{{ $timertournament[3]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[3]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[4]->level }}'+' - '+'{{ $timertournament[4]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[4]->in_seconds ) }}');
             break;
           case 4:
             $('#round').html('{{ $timertournament[4]->level }}');
+             $('#currentlevel1').html('{{ $timertournament[4]->level }}'+' - '+'{{ $timertournament[4]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[4]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[5]->level }}'+' - '+'{{ $timertournament[5]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[5]->in_seconds ) }}');
             break;
           case 5:
             $('#round').html('{{ $timertournament[5]->level }}');
+             $('#currentlevel1').html('{{ $timertournament[5]->level }}'+' - '+'{{ $timertournament[5]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[5]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[6]->level }}'+' - '+'{{ $timertournament[6]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[6]->in_seconds ) }}');
             break;
           case 6:
             $('#round').html('{{ $timertournament[6]->level }}');
+             $('#currentlevel1').html('{{ $timertournament[6]->level }}'+' - '+'{{ $timertournament[6]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[6]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[7]->level }}'+' - '+'{{ $timertournament[7]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[7]->in_seconds ) }}');
             break;
           case 7:
             $('#round').html('{{ $timertournament[7]->level }}');
+             $('#currentlevel1').html('{{ $timertournament[7]->level }}'+' - '+'{{ $timertournament[7]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[7]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[8]->level }}'+' - '+'{{ $timertournament[8]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[8]->in_seconds ) }}');
             break;
           case 8:
             $('#round').html('<b style="color:red;">'+'{{ $timertournament[8]->level }}'+'</b>');
+             $('#currentlevel1').html('{{ $timertournament[8]->level }}'+' - '+'{{ $timertournament[8]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[8]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[9]->level }}'+' - '+'{{ $timertournament[9]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[9]->in_seconds ) }}');
             break;
           case 9:
             $('#round').html('{{ $timertournament[9]->level }}');
+             $('#currentlevel1').html('{{ $timertournament[9]->level }}'+' - '+'{{ $timertournament[9]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[9]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[10]->level }}'+' - '+'{{ $timertournament[10]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[10]->in_seconds ) }}');
             break;
           case 10:
             $('#round').html('{{ $timertournament[10]->level }}');
+             $('#currentlevel1').html('{{ $timertournament[10]->level }}'+' - '+'{{ $timertournament[10]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[10]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[11]->level }}'+' - '+'{{ $timertournament[11]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[11]->in_seconds ) }}');
             break;
           case 11:
             $('#round').html('{{ $timertournament[11]->level }}');
+             $('#currentlevel1').html('{{ $timertournament[11]->level }}'+' - '+'{{ $timertournament[11]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[11]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[12]->level }}'+' - '+'{{ $timertournament[12]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[12]->in_seconds ) }}');
             break;
           case 12:
             $('#round').html('{{ $timertournament[12]->level }}');
+             $('#currentlevel1').html('{{ $timertournament[12]->level }}'+' - '+'{{ $timertournament[12]->blinds }}');
+            $('#currentlevel2').html('{{ gmdate("i:s", $timertournament[12]->in_seconds ) }}');
+            $('#nextlevel1').html('{{ $timertournament[13]->level }}'+' - '+'{{ $timertournament[13]->blinds }}');
+            $('#nextlevel2').html('{{ gmdate("i:s", $timertournament[13]->in_seconds ) }}');
             break;
           case 13:
-            $('#round').html('<b style="color:red;">'+'{{ $timertournament[13]->level }}'+'</b>');
-            break;
-          default:
-            $('#round').html('END OF TOURNAMENT');
+            $('#round').html('<b style="color:red;">'+'END OF TOURNAMENT'+'</b>');
+            $('#currentlevel1').html('END OF TOURNAMENT  ');
+            $('#currentlevel2').html(' ');
+            $('#nextlevel1').html(' ');
+            $('#nextlevel2').html(' ');
             break;
 
         }
