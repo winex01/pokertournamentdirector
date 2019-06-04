@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Emperor City Poker Tournament Director</title>
+    <title>Great Emperor Casino Database</title>
 
   
   <!-- Tell the browser to be responsive to screen width -->
@@ -22,65 +22,102 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/AdminLTE.min.css')}}">
  
-<!--   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/skins/skin-blue.min.css')}}">
- -->  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+     <!-- fullCalendar 2.2.5-->
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/fullcalendar/fullcalendar.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('adminlte/plugins/fullcalendar/fullcalendar.print.css')}}" media="print">
+    <!-- Theme style -->
+
+  <link rel="stylesheet" href="{{ asset('adminlte/dist/css/skins/skin-yellow.min.css')}}">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-  <link rel="stylesheet" href="{{ asset('adminlte/dist/css/skins/skin-yellow.min.css')}}">
-
-
   </head>
  
-  <body class="hold-transition skin-yellow sidebar-collapse sidebar-mini">
+  <body class="hold-transition skin-yellow sidebar-mini">
     <div class="wrapper">
-       <!-- Main Header -->
+
+      <!-- Main Header -->
       <header class="main-header">
 
-        <!-- Logo -->
+         <!-- Logo -->
         <a href="{{ url('/') }}" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b> </b></span>
+
+          <span class="logo-mini"><b>P</b>TD</span>
+
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>Tournament </b>Director</span>
+          <span class="logo-lg"><b>Tournament</b>Director</span>
         </a>
 
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-collapse" data-toggle="offcanvas" role="button">
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
           </a>
           <!-- Navbar Right Menu -->
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
-                          <!-- User Account Menu -->
-           <!--    <li class="dropdown user user-menu"> -->
-                <!-- Menu Toggle Button -->
-              <!--   <a href="#" class="dropdown-toggle" data-toggle="dropdown"> -->
-                  <!-- The user image in the navbar-->
-                <!--   <img src="{{asset('Emperor City Poker Header.jpg')}}" class="user-image" alt="User Image"> -->
-                  <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                  
+             
+<?php
+/*
+?>
 
-<!-- 
-                  <span class="hidden-xs">Emperor City Poker</span>
+
+              <!-- Notifications Menu -->
+              <li class="dropdown notifications-menu">
+                <!-- Menu toggle button -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-bell-o"></i>
+                  <span class="label label-warning">10</span>
                 </a>
-                <ul class="dropdown-menu"> -->
+                <ul class="dropdown-menu">
+                  <li class="header">You have 10 notifications</li>
+                  <li>
+                    <!-- Inner Menu: contains the notifications -->
+                    <ul class="menu">
+                      <li><!-- start notification -->
+                        <a href="#">
+                          <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                        </a>
+                      </li><!-- end notification -->
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="#">View all</a></li>
+                </ul>
+              </li>
+              
+  <?php 
+  */
+  ?>
+
+
+              <!-- User Account Menu -->
+              <li class="dropdown user user-menu">
+                <!-- Menu Toggle Button -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <!-- The user image in the navbar-->
+                  <img src="{{asset('Emperor City Poker Header.jpg')}}" class="user-image" alt="User Image">
+                  <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                   <!--<span class="hidden-xs">{{ Auth::user()->name }}</span> -->
+                </a>
+                <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
-                 <!--  <li class="user-header">
+                  <li class="user-header">
                     <img src="{{asset('Emperor City Poker Header.jpg')}}" class="img-circle" alt="User Image">
                     <p>
-                       {{ Auth::user()->name }} 
-                      <small>Member since {{ Auth::user()->created_at }} </small>
+                      {{ Auth::user()->name }}
+                      <small></small>
+                      <small>Member since {{ Auth::user()->created_at }}</small>
                     </p>
-                  </li> -->
+                  </li>
                   <!-- Menu Body -->
-<!--                   <li class="user-body">
+                <!--   <li class="user-body">
                     <div class="col-xs-4 text-center">
                       <a href="#">Followers</a>
                     </div>
@@ -92,25 +129,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                   </li> -->
                   <!-- Menu Footer-->
-                <!--   <li class="user-footer"> -->
-              <!--       <div class="pull-left">
+                  <li class="user-footer">
+                    <div class="pull-left">
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
-                    </div> -->
-                  <!--   <div class="pull-right">
-                      <a href="{{ route('logout') }}" class="btn btn-default btn-flat" style="color:black;"><i class="glyphicon glyphicon-podlock"></i> Sign Out</a>                   
-                      </div>
-                  </li> -->
-         
+                    </div>
+                    <div class="pull-right">
+                        <a href="{{ route('logout') }}" class="btn btn-default btn-flat" style="color:black;"><i class="glyphicon glyphicon-podlock"></i> Sign Out</a>                   
+                    </div>
+                  </li>
                 </ul>
               </li>
-              <!-- Control Sidebar Toggle Button -->
-              
+             
             </ul>
           </div>
         </nav>
       </header>
-      <!-- Left side column. contains the logo and sidebar -->
-    
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
 
@@ -118,16 +151,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <section class="sidebar">
 
           <!-- Sidebar user panel (optional) -->
-          <!-- <div class="user-panel">
-            <div class="pull-left image">
-              <img src="{{asset('chips/chips2x2/plain color chips_red.png')}}" class="img-circle" alt="User Image">
-            </div>
-            <div class="pull-left info">
-              <p> </p> -->
-              <!-- Status -->
-         <!--      <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-          </div> -->
+
+          <div class="user-panel">
+            <span class="pull-center">
+              <center><img style="height: 150px; width: 150px;" src="{{asset('Emperor City Poker Header.jpg')}}"class="avatar img-circle img-thumbnail" alt="avatar"></center>
+            </span>
+        
+          </div>
 
           <!-- search form (Optional) -->
         <!--   <form action="#" method="get" class="sidebar-form">
@@ -141,21 +171,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- /.search form -->
 
           <!-- Sidebar Menu -->
-<!--        
-<ul class="sidebar-menu">
-            <li class="header" style="font-size: 30px; color: red;"><b>PRIZE MONEY</b></li>
- 
-            <li class="active"><a href="#"> <span style="font-size: 20px; color: white;">1ST - Php 30,000</span></a></li>
-             <li class="active"><a href="#"> <span style="font-size: 20px; color: white;">2ND - Php 25,000</span></a></li>
-              <li class="active"><a href="#"> <span style="font-size: 20px; color: white;">3RD - Php 20,000</span></a></li>
-              <li class="active"><a href="#"> <span style="font-size: 20px; color: white;">4RD - Php 10,000</span></a></li>
-              <li class="active"><a href="#"> <span style="font-size: 20px; color: white;">5RD - Php 5,000</span></a></li>
+          <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li class="active"><a href="/tournament"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-hourglass-start"></i> <span>Dialy Tournament</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="#">Players</a></li>
+                <li><a href="#">Buyin</a></li>
+                <li><a href="#">Chips</a></li>
+                <li><a href="#">Level</a></li>
+                <li><a href="#">Pot Money</a></li>
              
-          </ul>
-        </section> -->
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-hourglass-start"></i> <span>Saturday Tournament</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="#">Players</a></li>
+                <li><a href="#">Buyin</a></li>
+                <li><a href="#">Chips</a></li>
+                <li><a href="#">Level</a></li>
+                <li><a href="#">Pot Money</a></li>
+              </ul>
+            </li>
+            
+            <!--<li class=""><a href="/event"><i class="fa fa-calendar"></i> <span>Events</span></a></li>
+            <li class=""><a href="#"><i class="fa fa-cog"></i> <span>Setting</span></a></li>
+          </ul> --><!-- /.sidebar-menu -->
+        </section>
         <!-- /.sidebar -->
       </aside>
 
+
+
+
+
+      
 
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
@@ -182,7 +235,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+          Version 1.1.0
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="#">Emperor City Poker</a>.</strong> All rights reserved.
+      </footer>
+
      
         </div>
       </aside><!-- /.control-sidebar -->
@@ -199,11 +276,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('adminlte/dist/js/app.min.js')}}"></script>
 
      <!-- fullCalendar 2.2.5 -->
-<!--       <script src="{{ asset('adminlte/plugins/moment.min.js')}}"></script>
+      <script src="{{ asset('adminlte/plugins/moment.min.js')}}"></script>
       <script src="{{ asset('adminlte/plugins/fullcalendar/fullcalendar.min.js')}}"></script>
- -->
 
-  @stack('custom-scripts')
 
   </body>
 </html>

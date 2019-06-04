@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.loginlayout')
 
 @section('content')
+<br><br><br>
+<center><b><h1 style="font-size: 50px; font-family:'digital-clock-font'">ADMINISTRATOR LOGIN</h1></b></center>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -38,7 +40,7 @@
                                 @endif
                             </div>
                         </div>
-
+<!-- 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -49,17 +51,17 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
+<!-- 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </form>
